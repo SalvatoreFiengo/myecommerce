@@ -1,0 +1,15 @@
+language: python
+jobs:
+  include:
+    - python: "3.7"
+      dist: xenial
+install: 
+  - "pip install -r requirements.txt"
+  - "pip install Pillow"
+  - "pip install django-forms-bootstrap"
+env:
+  - DJANGO=1.11.24
+before_script:
+  - chmod +x manage.py
+script:
+- SECRET_KEY="whatever" python manage.py test
