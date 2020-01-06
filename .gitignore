@@ -1,0 +1,5 @@
+*virtual/
+*sqlite3
+*.pvc
+*env.py
+__pycache__
