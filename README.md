@@ -8,3 +8,5 @@ An E-commerce website in developying using
  - CSS
  - Bootstrap 3
 More info will be posted
+
+[![Build Status](https://travis-ci.com/SalvatoreFiengo/myecommerce.svg?branch=master)](https://travis-ci.com/SalvatoreFiengo/myecommerce)
