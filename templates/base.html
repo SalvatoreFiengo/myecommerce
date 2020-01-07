@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My E-commerce {% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="row">
+            <div class="col-xs-hidden">
+                <nav class="navbar navbar-default">
+                    <ul class="nav navbar-nav m-0">
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'profile'%}">Profile</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout'%}">LogOut</a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'registration' %}">Register</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <h1 class="ml-1">My E-Commerce{% block page_header %}{% endblock %}</h1>
+    </header>
+    <section class="container-fluid background">
+        {% block content %}
+        {% endblock %}
+    </section>
+    <footer class="custom-footer sticky-footer bg-light">
+        <div class="row">
+            <div class="m-auto text-center">
+                <p class="copyright">© 2020, Salvatore Fiengo, Inc. or its affiliates. All rights reserved.
+                </p>   
+            </div>
+        </div>
+    </footer>
+    <style type="text/css">
+        .background { 
+            background: url('{% static "media/images/background.jpg" %}') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover; 
+            height:calc(100vh - 200px);
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load bootstrap_tags %}
+
+{% block title %}: Login Page {% endblock %}
+{% block page_header %} - Login Page {% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-1 col-md-6 col-md-offset-0 panel-margin pl-1 ">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="text-white">User Login</h3>
+            </div>
+            <div class="panel-body">
+                <hr>
+                {% if messages %}
+                <div>
+                    {% for message in messages %}
+                        {{message}}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <p>you are already logged in</p>
+                {% else %}
+                <form method="POST">
+                    <div style="display:none">
+                        <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+                    </div>
+                    {{ login_form | as_bootstrap }}
+                    <hr>
+                    <button type="submit" class="btn btn-success">Login</button>
+                </form>
+                <hr>
+                <div class="mt-1">
+                    <p>Forgot Your Password?</p>
+                    <p><a class="btn btn-primary" href="{% url 'password_reset' %}">Reset Password</a></p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
