@@ -15,8 +15,8 @@
 <body>
     <header>
         <div class="row">
-            <div class="col-xs-hidden">
-                <nav class="navbar navbar-default">
+            <nav class="navbar navbar-default mb-0">
+                <div class="hidden-xs">
                     <ul class="nav navbar-nav m-0">
                         {% if user.is_authenticated %}
                         <li>
@@ -34,10 +34,12 @@
                         </li>
                         {% endif %}
                     </ul>
-                </nav>
-            </div>
+                </div>
+            </nav>
         </div>
-        <h1 class="ml-1">My E-Commerce{% block page_header %}{% endblock %}</h1>
+        <div class="row">
+            <h1 class="media-page-header ml-1">My E-Commerce{% block page_header %}{% endblock %}</h1>
+        </div>
     </header>
     <section class="container-fluid background">
         {% block content %}
@@ -58,7 +60,7 @@
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover; 
-            height:calc(100vh - 200px);
+            height:calc(100vh - 180px);
         }
     </style>
 </body>

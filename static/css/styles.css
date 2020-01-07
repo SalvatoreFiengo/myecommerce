@@ -81,7 +81,7 @@ body, html {
 }
 
 header {
-    min-height: 125px;
+    min-height: 95px;
     max-height: 120px;
 }
 
@@ -118,4 +118,13 @@ input[name=new_password1],input[name=new_password2] {
     position: absolute;
     bottom: 0;
     left: calc(50% - 200px);
+}
+.media-page-header {
+    font-size: 20px;
+}
+
+@media only screen and (min-width: 576px){
+    .media-page-header {
+        font-size: 36px;
+    }
 }
