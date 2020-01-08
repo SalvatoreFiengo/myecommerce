@@ -18,6 +18,9 @@ Media:
 
 - Backgroung image and laptop:
     - [Technology photo created by freepik - www.freepik.com](https://www.freepik.com/free-photos-vectors/technology)
+    default/empty image
+    -Icons made by flaticon downloaded on  [freepik](https://www.flaticon.com/authors/freepik) originally from [www.flaticon.com](https://www.flaticon.com/)
+
 - Beauty section: 
     - lotion:
         [Background photo created by freepik - www.freepik.com](https://www.freepik.com/free-photos-vectors/background)

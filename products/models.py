@@ -35,7 +35,7 @@ class Product(models.Model):
     offer = models.DecimalField(max_digits=6, decimal_places=2, choices=OFFER_CHOICES, default=DEFAULT)
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=None, blank=False)
     discount = models.DecimalField(max_digits=6, decimal_places=2, default=0)
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images', blank=True, null=True)
 
     def __str__(self):
         return self.name

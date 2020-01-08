@@ -118,6 +118,17 @@ header {
     height: 140px;
 }
 
+.custom-thumbnail {
+    max-height: 500px;
+    min-height: 500px;  
+}
+
+.text-field {
+    height: 100px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
 input[name=new_password1],input[name=new_password2] {
     display: block;
     width: 100%;
