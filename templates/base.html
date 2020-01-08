@@ -1,6 +1,7 @@
-{% load static %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,36 +14,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
 </head>
+
 <body>
     <header>
         <div class="row">
-            <nav class="navbar navbar-default mb-0">
-                <div class="hidden-xs">
-                    <ul class="nav navbar-nav m-0">
-                        {% if user.is_authenticated %}
-                        <li>
-                            <a href="{% url 'profile'%}">Profile</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout'%}">LogOut</a>
-                        </li>
-                        {% else %}
-                        <li>
-                            <a href="{% url 'login' %}">Login</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'registration' %}">Register</a>
-                        </li>
-                        {% endif %}
-                    </ul>
+            <nav class="navbar navbar-default pt-1 mb-0">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed mt-0 ml-1 mr-1" data-toggle="collapse"
+                            data-target="#bs-primary-navbar-collapse" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="text-white glyphicon glyphicon-menu-hamburger"></span>
+                        </button>
+                        <a class="navbar-brand media-page-header" href="{% url 'index'%}">My
+                            E-Commerce{% block page_header %}{% endblock %}</a>
+                        <ul class="float-right nav nav-pills">
+                            {% if user.is_authenticated %}
+                            <li role="presentation" class="mr-1">
+                                <a class="btn btn-sm btn-default" href="{% url 'profile'%}">Profile</a>
+                            </li>
+                            <li role="presentation">
+                                <a class="btn btn-sm btn-default" href="{% url 'logout'%}">LogOut</a>
+                            </li>
+                            {% else %}
+                            <li role="presentation" class="mr-1">
+                                <a class="btn btn-sm btn-default" href="{% url 'login' %}">SignIn</a>
+                            </li>
+                            <li role="presentation">
+                                <a class="btn btn-sm btn-default" href="{% url 'registration' %}">SignUp</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="float-right collapse navbar-collapse" id="bs-primary-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <div class="navbar-form">
+                                    {% include 'filters.html' with categories=categories%}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </div>
-        <div class="row">
-            <h1 class="media-page-header ml-1">My E-Commerce{% block page_header %}{% endblock %}</h1>
-        </div>
     </header>
-    <section class="container-fluid background">
+    <section class="container-fluid p-0 background">
         {% block content %}
         {% endblock %}
     </section>
@@ -50,19 +68,20 @@
         <div class="row">
             <div class="m-auto text-center">
                 <p class="copyright">© 2020, Salvatore Fiengo, Inc. or its affiliates. All rights reserved.
-                </p>   
+                </p>
             </div>
         </div>
     </footer>
     <style type="text/css">
-        .background { 
-            background: url('{% static "media/images/background.jpg" %}') no-repeat center center fixed;
+        .background {
+            background: url('{% static "media/images/background.jpg" %}') no-repeat center center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
-            background-size: cover; 
-            height:calc(100vh - 180px);
+            background-size: cover;
+            min-height: 100vh
         }
     </style>
 </body>
+
 </html>

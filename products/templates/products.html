@@ -1,12 +1,35 @@
 {% extends 'base.html'%}
 {% load staticfiles %}
 {% block content %}
-
-{% for product in products %}
-    <h3>{{product.name}}</h3>
-{% empty %}
-    <h3>No products today!</h3>
-{% endfor %}
-
-
+<div class="product-wrapper">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 pl-1 pr-0">
+                    <div class="thumbnail custom-thumbnail">
+                        <img src="{{MEDIA_URL}}{{ product.image }}" alt="...">
+                        <div class="caption">
+                            <h3>{{product.name|truncatechars:18}}</h3>
+                            <hr>
+                            {%if product.offer > 0 %}
+                            <p><strike>{{ product.price }} &euro;</strike> now <u class="text-danger">{{ product.discount }} &euro;</u></p> 
+                            {% else %}
+                                <p>{{ product.price }} &euro;</p>
+                            {% endif %}
+                            <hr>
+                            <p>{{ product.description|linebreaks }}</p>
+                            <hr>
+                            <p>
+                                <a href="#" class="btn btn-primary" role="button">Button</a> 
+                                <a href="#"class="btn btn-default" role="button">Button</a>
+                            </p>
+                        </div>
+                    </div>            
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock%}
