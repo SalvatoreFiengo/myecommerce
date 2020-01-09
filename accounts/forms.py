@@ -1,6 +1,9 @@
 from django import forms
+from django.forms import SelectDateWidget, DateField
+from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import Userprofile
 
 
 class UserLoginForm(forms.Form):
@@ -36,3 +39,24 @@ class UserRegistrationForm(UserCreationForm):
         if password1 != password2:
             raise forms.ValidationError(u'Password must match')
         return password2
+
+class UserForm(forms.ModelForm):
+    """Form to update User username in Profile"""
+    class Meta:
+        model = User
+        fields = ('first_name','last_name','email')
+
+def previous_years(delta):
+    current_year = timezone.now().year
+    previous_year = current_year -delta -1
+    return list(range(previous_year, current_year))
+
+class UserProfileForm(forms.ModelForm):
+    """Form to update User Profile"""
+    birth_date = DateField(
+        widget=SelectDateWidget(years=previous_years(100))
+    )
+    class Meta:
+        model = Userprofile
+        fields = '__all__'
+

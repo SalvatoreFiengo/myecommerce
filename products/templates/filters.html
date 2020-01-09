@@ -6,14 +6,14 @@
         <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
     </div>
     <div class="input-group input-group-sm">
-        <select class="form-control" name="filter-by-category" id="">
+        <select class="form-control" name="filter-by-category">
             <option value="all_categories">All Categories</option>
             {%for cat in categories%}
             <option value="{{cat}}">{{cat}}</option>    
             {% endfor %}
         </select>
         <span class="input-group-btn">
-            <button class="btn btn-sm btn-primary" type="submit">Filter</button>
+            <button class="btn btn-sm btn-default" type="submit">Filter</button>
         </span>
     </div>
 </form>

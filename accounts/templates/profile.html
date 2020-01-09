@@ -1,7 +1,67 @@
 {% extends 'base.html' %}
-
+{% load bootstrap_tags %}
 {% block page_title %}: {{ user }}'s Profile {% endblock %}
 {% block page_header %} - {{ user }}'s Profile {% endblock %}
 {% block content %}
-<p>{{profile.email}}</p>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <div class="panel-wrapper panel panel-primary">
+            <div class="panel-heading">
+                <p>User Name:</p> 
+            </div>
+            {% if user.first_name or user.last_name %}
+            <div class="panel-body">
+                <p>{{ user.first_name }} {{ user.last_name }}</p>
+            </div>
+            {% else %}
+            <div class="panel-body">
+                <p>First Name and Last Name not set</p>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        
+        <div class="panel-wrapper panel panel-primary">
+            <div class="panel-heading">
+                <p>Birth Date:</p> 
+            </div>
+            {% if profile.bio %}
+            <div class="panel-body">
+                <p>{{ profile.birth_date}}</p>
+            </div>
+            {% else %}
+            <div class="panel-body">
+                <p>Birth date not set</p>
+            </div>
+            {% endif %}
+        </div>
+
+        {% if profile.location %}
+        <p>{{ profile.location }}</p>
+        {% else %}
+        <p>Location not set</p>
+        {% endif %}
+        {% if profile.has_logged_in %}
+        <p>has logged in</p>
+        {% else %}
+        <p>never logged in</p>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        {% if profile.bio %}
+        <p>{{ profile.bio}}</p>
+        {% else %}
+        <p>Profile Bio is empty</p>
+        {% endif %}
+    </div>  
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <a href="{% url 'edit_profile' %}" type="button" class="btn btn-info"> Edit Profile</a>
+    </div>
+</div>
 {% endblock %}

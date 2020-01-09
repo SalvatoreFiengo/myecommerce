@@ -29,7 +29,7 @@ def all_products(request):
         "products": products, 
         "categories": categories, 
         "carousel_items": carousel_items, 
-        "carousel_items_range": range(carousel_qty) 
+        "carousel_items_range": range(carousel_qty)
         })
 
 def filter_product_by_category(request):

@@ -31,10 +31,11 @@ class Product(models.Model):
 
     name = models.CharField(max_length=254, default='')
     description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-    offer = models.DecimalField(max_digits=6, decimal_places=2, choices=OFFER_CHOICES, default=DEFAULT)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    offer = models.DecimalField(max_digits=8, decimal_places=2, choices=OFFER_CHOICES, default=DEFAULT)
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=None, blank=False)
-    discount = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    discount = models.DecimalField(max_digits=9, decimal_places=2, default=0, editable=False)
+    stock = models.DecimalField(max_digits=6, decimal_places=0, default=0)
     image = models.ImageField(upload_to='images', blank=True, null=True)
 
     def __str__(self):

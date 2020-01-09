@@ -14,6 +14,7 @@ More info will be posted
 Many thanks to Stack Overflow and [Martavis P.](https://stackoverflow.com/users/2693236/martavis-p) which helped with a CSS solution: 
 [Bootstrap 3 navbar-collapse absolute](https://stackoverflow.com/questions/23403923/make-bootstrap-3-collapsed-menu-overlay-page) 
 
+how to extend django user model on [simpleisbetterthancomplex](https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html)
 Media:
     credits:
     <a href="http://www.freepik.com">Designed by Freepik</a>

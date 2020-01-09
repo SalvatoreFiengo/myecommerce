@@ -1,6 +1,6 @@
 {% load static from staticfiles %}
 {% block carousel %}
-{% if products %}
+{% if carousel_items%}
 <div id="carousel-products" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -23,7 +23,7 @@
                 <img class="carousel-img-size" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
                 {% else %}
                 <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}" alt="{% static '/media/images/background.jpg' %}">
-                <img class="carousel-img-size" src="{% static 'images/default.png' %}" alt="default">
+                <img class="carousel-img-size" src="{% static '/media/images/default-product.png' %}" alt="default">
                 {% endif %}
                 <div class="carousel-caption">
                     <div class="carousel-caption-wrapper">
@@ -39,7 +39,7 @@
                 <img class="carousel-img-size" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
                 {% else %}
                 <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}" alt="{% static '/media/images/background.jpg' %}">
-                <img class="carousel-img-size" src="{% static 'images/default.png' %}" alt="default">
+                <img class="carousel-img-size" src="{% static '/media/images/default-product.png' %}" alt="default">
                 {% endif %}
                 <div class="carousel-caption">
                     <div class="carousel-caption-wrapper">
