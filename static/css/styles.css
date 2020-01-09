@@ -85,8 +85,12 @@ body {
     color: #fff;
 }
 
+.text-dark {
+    color: #343a40;
+}
+
 .bg-light{
-    background-color: #f8f9fa
+    background-color: #f8f9fa;
 }
 
 .row {
@@ -107,20 +111,52 @@ header {
 }
 
 .nav>li>a {
-    padding: 10px;
+    margin-top: 8px;
+    padding: 5px 10px;
+}
+
+.carousel-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.carousel-inner>.item {
+    min-height: 200px;
+}
+
+.carousel-img-size {
+    min-height: 200px;
+    max-height: 200px;
+    max-width: 360px!important;
 }
 
 .product-wrapper {
+    display: inline-block;
     padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0;
+    margin-top: 5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.thumbnail {
+    margin: 0 auto;
+    margin-bottom: 15px;
 }
 
 .thumbnail > img {
     height: 140px;
+    max-width: 240px;
 }
 
 .custom-thumbnail {
     max-height: 500px;
-    min-height: 500px;  
+    min-height: 500px; 
+    min-width: 250px; 
+    max-width: 350px;
 }
 
 .text-field {

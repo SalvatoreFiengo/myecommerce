@@ -1,5 +1,10 @@
-*virtual/
-*sqlite3
-*.pvc
-*env.py
-__pycache__
+__pycache__/
+accounts/__pycache__/
+accounts/migrations/__pycache__/
+db.sqlite3
+env.py
+myecommerce/__pycache__/
+products/__pycache__/
+products/migrations/__pycache__/
+virtual/
+media/

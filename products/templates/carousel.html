@@ -1,0 +1,66 @@
+{% load static from staticfiles %}
+{% block carousel %}
+{% if products %}
+<div id="carousel-products" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        {% for n in carousel_items_range %}
+            {% if n < 1%}
+            <li data-target="#carousel-products" data-slide-to="{{n}}" class="active"></li>
+            {% else %}
+            <li data-target="#carousel-products" data-slide-to="{{n}}"></li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        {% for product in carousel_items %}
+            {% if forloop.counter == 1 %} 
+            <div class="item active">
+                {% if product.image %}
+                <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}" alt="{% static '/media/images/background.jpg' %}">
+                <img class="carousel-img-size" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
+                {% else %}
+                <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}" alt="{% static '/media/images/background.jpg' %}">
+                <img class="carousel-img-size" src="{% static 'images/default.png' %}" alt="default">
+                {% endif %}
+                <div class="carousel-caption">
+                    <div class="carousel-caption-wrapper">
+                        <h3 class="text-dark">{{ product.name }}</h3>
+                        <h4 class="text-danger"><strong>NOW ONLY <u>{{ product.discount }} &euro;</u></strong></h4>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="item">
+                {% if product.image %}
+                <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}" alt="{% static '/media/images/background.jpg' %}">
+                <img class="carousel-img-size" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
+                {% else %}
+                <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}" alt="{% static '/media/images/background.jpg' %}">
+                <img class="carousel-img-size" src="{% static 'images/default.png' %}" alt="default">
+                {% endif %}
+                <div class="carousel-caption">
+                    <div class="carousel-caption-wrapper">
+                        <h3 class="text-dark">{{ product.name }}</h3>
+                        <h4 class="text-danger"><strong>NOW ONLY <u>{{ product.discount }} &euro;</u></strong></h4>
+                    </div>
+                </div>
+            </div>  
+            {%endif%}      
+        {% endfor %}
+    </div>
+
+    <!-- Controls -->
+    <!-- <a class="left carousel-control" href="#carousel-products" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-products" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a> -->
+</div>
+{% endif %}
+{% endblock carousel %}

@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,9 +60,14 @@
             </nav>
         </div>
     </header>
-    <section class="container-fluid p-0 background">
-        {% block content %}
-        {% endblock %}
+    <section class="container-fluid p-0">
+        <div class="carousel-wrapper">
+            {% include 'carousel.html' %}
+        </div>
+        <div class="content-wrapper background">
+            {% block content %}
+            {% endblock %}
+        </div>
     </section>
     <footer class="custom-footer sticky-footer bg-light">
         <div class="row">
@@ -74,13 +79,15 @@
     </footer>
     <style type="text/css">
         .background {
-            background: url('{% static "media/images/background.jpg" %}') no-repeat center center;
+            background: url("{% static '/media/images/background.jpg' %}");
+            background-repeat: no-repeat;
+            background-position: center center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
             min-height: 100vh
-        }
+}
     </style>
 </body>
 

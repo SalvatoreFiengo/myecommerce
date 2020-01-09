@@ -1,8 +1,15 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Product
 
-def all_products(request):
-    products = Product.objects.all()
+def get_products_for_carousel(products):
+    showlist = []
+    for product in products:
+        if product.offer > 0:
+            showlist.append(product)
+    carousel_items = sorted(showlist, key=lambda product: product.discount, reverse=True)
+    return carousel_items
+
+def get_categories_and_set_offer(products):
     categories = []
     for product in products:
         categories.append(product.category)
@@ -11,7 +18,19 @@ def all_products(request):
             product.discount = product.price - offer_amount
             product.discount = "%.2f" % product.discount
             product.save()
-    return render(request, "products.html", { "products": products, "categories": categories })
+    return categories
+
+def all_products(request):
+    products = Product.objects.all()
+    categories = get_categories_and_set_offer(products)
+    carousel_items = get_products_for_carousel(products)
+    carousel_qty = len(carousel_items)
+    return render(request, "products.html", { 
+        "products": products, 
+        "categories": categories, 
+        "carousel_items": carousel_items, 
+        "carousel_items_range": range(carousel_qty) 
+        })
 
 def filter_product_by_category(request):
     if request.method == "POST":
@@ -29,3 +48,4 @@ def filter_product_by_category(request):
             return render(request, "products.html", {"products": filtered_products, "categories": categories})
     else:
         return redirect(reverse("products"))
+
