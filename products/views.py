@@ -21,6 +21,7 @@ def get_categories_and_set_offer(products):
     return categories
 
 def all_products(request):
+    background = '/media/images/background.jpg'
     products = Product.objects.all()
     categories = get_categories_and_set_offer(products)
     carousel_items = get_products_for_carousel(products)
@@ -29,10 +30,12 @@ def all_products(request):
         "products": products, 
         "categories": categories, 
         "carousel_items": carousel_items, 
-        "carousel_items_range": range(carousel_qty)
+        "carousel_items_range": range(carousel_qty),
+        "background_image": background
         })
 
 def filter_product_by_category(request):
+    background = '/media/images/background.jpg'
     if request.method == "POST":
         all_products = Product.objects.all()
         categories = []
@@ -40,12 +43,14 @@ def filter_product_by_category(request):
         if selected_category == "all_categories":
             return redirect(reverse("products"))
         else:
+
+            category = request.POST["filter-by-category"]
             for product in all_products:
                 categories.append(product.category)
             
-            filtered_products = Product.objects.filter(category=request.POST["filter-by-category"])
+            filtered_products = Product.objects.filter(category=category)
         
-            return render(request, "products.html", {"products": filtered_products, "categories": categories})
+            return render(request, "products.html", {"products": filtered_products, "categories": categories, "background_image": background})
     else:
         return redirect(reverse("products"))
 
