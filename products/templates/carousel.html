@@ -5,50 +5,46 @@
     <!-- Indicators -->
     <ol class="carousel-indicators">
         {% for n in carousel_items_range %}
-            {% if n < 1%}
-            <li data-target="#carousel-products" data-slide-to="{{n}}" class="active"></li>
-            {% else %}
-            <li data-target="#carousel-products" data-slide-to="{{n}}"></li>
-            {% endif %}
+        {% if n < 1%}
+        <li data-target="#carousel-products" data-slide-to="{{n}}" class="active"></li>
+        {% else %}
+        <li data-target="#carousel-products" data-slide-to="{{n}}"></li>
+        {% endif %}
         {% endfor %}
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         {% for product in carousel_items %}
-            {% if forloop.counter == 1 %} 
-            <div class="item active">
-                {% if product.image %}
-                <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}" alt="{% static '/media/images/background.jpg' %}">
-                <img class="carousel-img-size" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
-                {% else %}
-                <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}" alt="{% static '/media/images/background.jpg' %}">
-                <img class="carousel-img-size" src="{% static '/media/images/default-product.png' %}" alt="default">
-                {% endif %}
-                <div class="carousel-caption">
-                    <div class="carousel-caption-wrapper">
-                        <h3 class="text-dark">{{ product.name }}</h3>
-                        <h4 class="text-danger"><strong>NOW ONLY <u>{{ product.discount }} &euro;</u></strong></h4>
-                    </div>
+        <div class="item {% if forloop.counter == 1 %} active {% endif %}">
+            {% if product.image %}
+            <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}"
+                alt="{% static '/media/images/background.jpg' %}">
+            <figure class="figure">
+                <div class="product-img-vertical-fix"></div>
+                <img class="carousel-img-size figure-img" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
+                <figcaption class="figure-caption">
+                    <p>{{ product.name }}</p>
+                </figcaption>
+            </figure>
+            {% else %}
+            <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}"
+                alt="{% static '/media/images/background.jpg' %}">
+            <figure class="figure">
+                <div class="product-img-vertical-fix"></div>
+                <img class="carousel-img-size figure-img" src="{% static '/media/images/default-product.svg' %}" alt="default">
+                <figcaption class="figure-caption">
+                    <p>{{ product.name }}</p>
+                </figcaption>
+            </figure>
+            {% endif %}
+            <div class="carousel-caption">
+                <div class="carousel-caption-wrapper">
+                    <p class="text-dark">{{product.name|truncatechars:18}}</p>
+                    <p class="text-danger"><strong>NOW ONLY <u>{{ product.discount }} &euro;</u></strong></p>
                 </div>
             </div>
-            {% else %}
-            <div class="item">
-                {% if product.image %}
-                <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}" alt="{% static '/media/images/background.jpg' %}">
-                <img class="carousel-img-size" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
-                {% else %}
-                <img class="carousel-background" src="{% static '/media/images/technology-background.jpg' %}" alt="{% static '/media/images/background.jpg' %}">
-                <img class="carousel-img-size" src="{% static '/media/images/default-product.png' %}" alt="default">
-                {% endif %}
-                <div class="carousel-caption">
-                    <div class="carousel-caption-wrapper">
-                        <h3 class="text-dark">{{ product.name }}</h3>
-                        <h4 class="text-danger"><strong>NOW ONLY <u>{{ product.discount }} &euro;</u></strong></h4>
-                    </div>
-                </div>
-            </div>  
-            {%endif%}      
+        </div>
         {% endfor %}
     </div>
 

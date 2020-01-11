@@ -1,7 +1,7 @@
 {% load staticfiles %}
 {% block filters %}
 {% if categories %}
-<form action="{% url 'filtered'%}" method="POST">
+<form action="{% url 'products'%}" method="POST">
     <div style="display:none">
         <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
     </div>

@@ -85,6 +85,10 @@ body {
     float: right;
 }
 
+.float-left {
+    float: left;
+}
+
 .text-white {
     color: #fff;
 }
@@ -114,11 +118,7 @@ header {
     max-height: 62px;
 }
 
-.nav>li>a {
-    margin-top: 8px;
-    padding: 5px 10px;
-}
-
+/* carousel */
 .carousel-background {
     position: absolute;
     top: 0;
@@ -126,17 +126,61 @@ header {
     right: 0;
     z-index: -1;
 }
+.carousel-inner {
+    text-align: center;
+}
 
 .carousel-inner>.item {
     min-height: 200px;
 }
-
-.carousel-img-size {
-    min-height: 200px;
-    max-height: 200px;
-    max-width: 360px!important;
+.carousel-indicators {
+    bottom: -15px;
+}
+.carousel-indicators .active {
+    border: 1px solid #178acc;
+    background-color: #178acc;
+}
+.carousel-indicators > li{
+    border: 1px solid #6c757d;
+    background-color: #6c757d;
+}
+.product-img-vertical-fix {
+    display: inline-block;
+    height: 100%;
+}
+.figure {
+    display: inline-block;
+    padding-top: 2.5rem;
+    vertical-align: middle;
 }
 
+.carousel-img-size {
+    max-height: 100px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.figure-caption {
+    font-size: 90%;
+    color: #6c757d;
+}
+
+.carousel-caption {
+    padding-bottom: 0;
+    bottom: 0;
+}
+
+.carousel-caption-wrapper {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding-bottom: 12px;
+}
+.carousel-caption-wrapper > p {
+    font-size: 1.5rem;
+    margin: 0;
+}
 .panel-wrapper {
     display: inline-block;
     margin-bottom: 0;
@@ -224,15 +268,27 @@ input[name=new_password1],input[name=new_password2] {
 }
 /* navbar-collapse behaviour */
 
+.nav>li>a {
+    margin-top: 8px;
+    padding: 5px 10px;
+}
+.nav-pills>li>.btn {
+    width: 60px;
+}
+
+.nav-pills>li+li {
+    margin: 0;
+}
+
 .collapsing
 {
     position: absolute;
     background-color: #2fa4e7;
     border-color: #1995dc;
     z-index: 20;
-    width: 50%;
-    top: 61.5px;
-    right:0;
+    width: 100px;
+    top: 60.5px;
+    right: 0;
 }
 .collapse.in {
     display: block;
@@ -240,9 +296,17 @@ input[name=new_password1],input[name=new_password2] {
     border-color: #1995dc;
     position: absolute;
     z-index: 20;
-    width: 50%;
-    top: 61.5px;
-    right:0;
+    width: 100px;
+    top: 60.5px;
+    right: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.collapse.in > .btn {
+    margin: 0;
+
 }
 
 .navbar-collapse
@@ -254,14 +318,78 @@ input[name=new_password1],input[name=new_password2] {
     margin:0;
 }
 
-.navbar-pills>li>a {
-    padding: 10px 15px;
-}
 
-@media only screen and (min-width: 576px){
+@media (min-width: 576px){
     .media-page-header {
         font-size: 36px;
         margin-right: 0.8rem;
     }
+    .carousel-caption {
+        padding-bottom: 20px;
+        bottom: 20px;
+    }
+    
+    .carousel-caption-wrapper {
+        background-color: transparent;
+        border: none;
+    }
 }
 
+@media (min-width: 768px){
+
+    .nav-pills>li+li {
+        margin-left: 2px;
+    }
+    .navbar-form .input-group>.form-control {
+        width: auto;
+    }
+    
+    .carousel-inner {
+        text-align: inherit;
+    }
+
+    .carousel-inner>.item {
+        min-height: 300px;
+    }
+
+    .carousel-indicators {
+        bottom: -7px;
+    }
+    .product-img-vertical-fix {
+        display: none;
+    }
+    .figure {
+        margin-left: 15px;
+        padding-top: 0;
+    }
+    .carousel-img-size {
+        padding-top: 15px;
+        max-height: 250px;
+        min-height: 250px;
+        margin-right: inherit;
+        width: auto;
+    }
+
+    .carousel-caption {
+        left: 65%;
+        right: 10%;
+        bottom: 25%;
+    }
+    .carousel-caption-wrapper > p {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 900px){
+    .figure{
+        margin-left: 15px;
+        padding-top: 0;
+    }
+    .carousel-img-size {
+        padding-top: 15px;
+        max-height: 360px;
+        min-height: 360px;
+        margin-right: inherit;
+        width: auto;
+    } 
+}

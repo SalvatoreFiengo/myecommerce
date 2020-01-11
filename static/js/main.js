@@ -5,9 +5,8 @@ $(window).on('load resize', function(){
 })
 
 $(document).ready(function(){
-    $(window).on('load resize', function(){
+    $(window).on('resize', function(){
         newWidth = Math.floor($('#products').width()/250)
-        console.log(newWidth)
         $('.products-wrapper').css({'width' : (254*newWidth)+"px"})
     })
     
