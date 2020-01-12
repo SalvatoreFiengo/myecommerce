@@ -39,7 +39,7 @@ body {
 }
 
 .pr-1 {
-    padding-right:1rem;
+    padding-right: 1rem;
 }
 
 .m-0 {
@@ -65,6 +65,7 @@ body {
 .mr-1 {
     margin-right: 1rem;
 }
+
 .ml-1 {
     margin-left: 1rem;
 }
@@ -97,7 +98,7 @@ body {
     color: #343a40;
 }
 
-.bg-light{
+.bg-light {
     background-color: #f8f9fa;
 }
 
@@ -109,16 +110,13 @@ body {
     border: none;
 }
 
-.panel-margin {
-    margin-top: 2vh;
-}
-
 header {
     height: 62px;
     max-height: 62px;
 }
 
 /* carousel */
+
 .carousel-background {
     position: absolute;
     top: 0;
@@ -126,6 +124,7 @@ header {
     right: 0;
     z-index: -1;
 }
+
 .carousel-inner {
     text-align: center;
 }
@@ -133,21 +132,26 @@ header {
 .carousel-inner>.item {
     min-height: 200px;
 }
+
 .carousel-indicators {
     bottom: -15px;
 }
+
 .carousel-indicators .active {
     border: 1px solid #178acc;
     background-color: #178acc;
 }
-.carousel-indicators > li{
+
+.carousel-indicators>li {
     border: 1px solid #6c757d;
     background-color: #6c757d;
 }
+
 .product-img-vertical-fix {
     display: inline-block;
     height: 100%;
 }
+
 .figure {
     display: inline-block;
     padding-top: 2.5rem;
@@ -177,12 +181,13 @@ header {
     border-radius: 4px;
     padding-bottom: 12px;
 }
-.carousel-caption-wrapper > p {
+
+.carousel-caption-wrapper>p {
     font-size: 1.5rem;
     margin: 0;
 }
+
 .panel-wrapper {
-    display: inline-block;
     margin-bottom: 0;
     margin-top: 5rem;
     margin-bottom: 1rem;
@@ -202,7 +207,7 @@ header {
     display: inline-block;
 }
 
-.custom-media-list-products>li{
+.custom-media-list-products>li {
     width: 250px;
     padding: 0px
 }
@@ -212,13 +217,13 @@ header {
     margin-bottom: 15px;
 }
 
-.thumbnail > img {
+.thumbnail>img {
     height: 140px;
     max-width: 240px;
 }
 
 .custom-thumbnail {
-    height: 500px; 
+    height: 500px;
     width: 250px;
 }
 
@@ -228,7 +233,7 @@ header {
     overflow-y: auto;
 }
 
-input[name=new_password1],input[name=new_password2] {
+input[name=new_password1], input[name=new_password2], input[name=first_name], input[name=last_name], input[name=location] {
     display: block;
     width: 100%;
     height: 38px;
@@ -240,14 +245,63 @@ input[name=new_password1],input[name=new_password2] {
     background-image: none;
     border: 1px solid #cccccc;
     border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-.custom-footer{
+select[name=birth_date_day], select[name=birth_date_month], select[name=birth_date_year] {
+    display: inline-block;
+    height: 38px;
+    padding: 8px 2px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+select[name=birth_date_day] {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+select[name=birth_date_year] {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+textarea[name=bio] {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+}
+
+.custom-footer {
     height: 75px;
     min-height: 75px;
 }
@@ -257,21 +311,25 @@ input[name=new_password1],input[name=new_password2] {
     bottom: 0;
     width: 100%;
 }
+
 .copyright {
     position: absolute;
     bottom: 0;
     left: calc(50% - 200px);
 }
+
 .media-page-header {
     font-size: 18px;
     padding-right: 2px
 }
+
 /* navbar-collapse behaviour */
 
 .nav>li>a {
     margin-top: 8px;
     padding: 5px 10px;
 }
+
 .nav-pills>li>.btn {
     width: 60px;
 }
@@ -280,8 +338,7 @@ input[name=new_password1],input[name=new_password2] {
     margin: 0;
 }
 
-.collapsing
-{
+.collapsing {
     position: absolute;
     background-color: #2fa4e7;
     border-color: #1995dc;
@@ -290,6 +347,7 @@ input[name=new_password1],input[name=new_password2] {
     top: 60.5px;
     right: 0;
 }
+
 .collapse.in {
     display: block;
     background-color: #2fa4e7;
@@ -304,22 +362,20 @@ input[name=new_password1],input[name=new_password2] {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
 }
-.collapse.in > .btn {
-    margin: 0;
 
+.collapse.in>.btn {
+    margin: 0;
 }
 
-.navbar-collapse
-{
+.navbar-collapse {
     max-height: none;
 }
 
-.navbar-collapse>.navbar-nav{
-    margin:0;
+.navbar-collapse>.navbar-nav {
+    margin: 0;
 }
 
-
-@media (min-width: 576px){
+@media (min-width: 576px) {
     .media-page-header {
         font-size: 36px;
         margin-right: 0.8rem;
@@ -328,30 +384,25 @@ input[name=new_password1],input[name=new_password2] {
         padding-bottom: 20px;
         bottom: 20px;
     }
-    
     .carousel-caption-wrapper {
         background-color: transparent;
         border: none;
     }
 }
 
-@media (min-width: 768px){
-
+@media (min-width: 768px) {
     .nav-pills>li+li {
         margin-left: 2px;
     }
     .navbar-form .input-group>.form-control {
         width: auto;
     }
-    
     .carousel-inner {
         text-align: inherit;
     }
-
     .carousel-inner>.item {
         min-height: 300px;
     }
-
     .carousel-indicators {
         bottom: -7px;
     }
@@ -369,19 +420,18 @@ input[name=new_password1],input[name=new_password2] {
         margin-right: inherit;
         width: auto;
     }
-
     .carousel-caption {
         left: 65%;
         right: 10%;
         bottom: 25%;
     }
-    .carousel-caption-wrapper > p {
+    .carousel-caption-wrapper>p {
         font-size: 2rem;
     }
 }
 
-@media (min-width: 900px){
-    .figure{
+@media (min-width: 900px) {
+    .figure {
         margin-left: 15px;
         padding-top: 0;
     }
@@ -391,5 +441,5 @@ input[name=new_password1],input[name=new_password2] {
         min-height: 360px;
         margin-right: inherit;
         width: auto;
-    } 
+    }
 }

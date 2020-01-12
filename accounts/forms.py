@@ -1,9 +1,9 @@
 from django import forms
 from django.forms import SelectDateWidget, DateField
-from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Userprofile
+from helper.functions import previous_years
 
 
 class UserLoginForm(forms.Form):
@@ -46,10 +46,7 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('first_name','last_name','email')
 
-def previous_years(delta):
-    current_year = timezone.now().year
-    previous_year = current_year -delta -1
-    return list(range(previous_year, current_year))
+
 
 class UserProfileForm(forms.ModelForm):
     """Form to update User Profile"""

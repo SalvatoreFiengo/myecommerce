@@ -3,20 +3,82 @@
 {% block page_title %}: {{ user }}'s Profile {% endblock %}
 {% block page_header %} - {{ user }}'s Profile {% endblock %}
 {% block content %}
-<div class="panel-wrapper panel">
-    <form method="post" action="{% url 'update_profile'%}">
-        {% csrf_token %}
-        <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-            {{ user_form | as_bootstrap }}
-            {{ profile_form | as_bootstrap }}
-        </div>     
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <button class="btn btn-success" type="submit">Save changes</button>
+
+<div class="panel-wrapper panel panel-info">
+    <div class="panel-heading">
+        You can edit your Profile Details below
+    </div>
+    <div class="panel-body">
+        <form method="post" action="{% url 'update_profile'%}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr colspan=2>
+                                <th>#</th>
+                                <th>Personal details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <p>First Name</p>
+                                </th>
+                                <td>
+                                    <p>{{ user_form.first_name }}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <p>Last Name</p>
+                                </th>
+                                <td>
+                                    <p>{{ user_form.last_name }}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <p>Birth Date</p>
+                                </th>
+                                <td>
+                                    <p>{{ profile_form.birth_date}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <p>Location</p>
+                                </th>
+                                <td>
+                                    <p>{{ profile_form.location }}</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Bio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>{{ profile_form.bio}}</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </form>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <button class="btn btn-info" type="submit">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

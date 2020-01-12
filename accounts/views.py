@@ -49,7 +49,8 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered")
-                return redirect(reverse('index'))
+
+                return redirect('edit_profile')
             else:
                 messages.error(request, "Unable to register your account at this time")
     else:
@@ -60,7 +61,7 @@ def registration(request):
 @login_required
 def user_profile(request):
     """Renders the user profile page"""
-    user = User.objects.get(email=request.user.email)
+    user = User.objects.get(pk=request.user.id)
     return render(request, 'profile.html', {'user': user, 'profile': user.userprofile})
 
 @login_required
@@ -79,7 +80,7 @@ def update_profile(request):
             user_form.save()
             profile_form.save()
             messages.success(request, ('Your profile was successfully updated!'))
-            return redirect(reverse('profile'))
+            return redirect(reverse('index'))
         else:
             messages.error(request, ('Please correct the error below.'))
     else:
