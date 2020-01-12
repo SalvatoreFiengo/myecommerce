@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block content %}
+
+<div class="row">
+    <span><h2 class="bg-info text-center"> {{ product.name }} </h2></span>
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
+        {% if product.image %}
+        <img class="product-detail-img" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
+        {% else %}
+        <img src="{% static 'media/images/default-product.svg' %}" alt="default">
+        {% endif %}
+        <p class="boldtext">{{ product.name }}</p>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-5 col-lg-5">
+        <div class="product-details-container bg-through text-center">
+            {%if product.offer > 0 %}
+            <p>previous price: <strike>{{ product.price }} &euro;</strike> </p>
+            <p>discount {{ product.offer }}%</p>
+            <p>now only <u class="text-danger">{{ product.discount }} &euro;</u></p>
+            {% else %}
+            <p>{{ product.price }} &euro;</p>
+            {% endif %}
+            <hr>
+            {% if product.stock > 10 %}
+            <p class="text-success">Available</p>
+            {%elif product.stock < 1 %}
+            <p class="text-danger">No avalaibility at the moment</p>
+            {%elif product.stock > 1 and product.stock < 10 %}
+            <p class="text-warning"><u>Only {{ product.stock }} left in stock</u></p>
+            {% endif %}
+            <div class="row">
+                <div class="col-xs-6">
+                    {{ product.description|linebreaks }}
+                </div>
+                <div class="col-xs-6">
+                    <p>stars</p>
+                    <p>product feedbacks</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

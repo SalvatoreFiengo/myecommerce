@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.template.defaulttags import register
+from django.shortcuts import get_object_or_404
 from helper.functions import get_categories, get_products_for_carousel
 from helper.variables import background
 from .models import Product
@@ -37,4 +38,12 @@ def all_products(request):
         "background":background
         })
 
+def product_details(request, pk):
+    product = Product.objects.get(pk=pk)
+    selected_background = background[product.category]
+    if product:
+        return render(request, 
+            "product-detail.html",
+            {"product": product, 
+            "background_image": selected_background})
 

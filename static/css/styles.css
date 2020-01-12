@@ -246,7 +246,19 @@ header {
     max-height: 78px;
     overflow-y: auto;
 }
-
+.product-detail-img {
+    height: 120px;
+    margin: 1rem;
+}
+.product-details-container{
+    display: inline-block;
+    margin-top: 1rem;
+    height: 100%;
+    background: rgba(255, 255, 255, .8);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size:1.5rem;
+}
 input[name=new_password1], input[name=new_password2], input[name=first_name], input[name=last_name], input[name=location] {
     display: block;
     width: 100%;
