@@ -18,6 +18,8 @@ how to extend django user model on [simpleisbetterthancomplex](https://simpleisb
 Media:
     credits:
     <a href="http://www.freepik.com">Designed by Freepik</a>
+    white background 
+    -<a href="https://www.freepik.com/free-photos-vectors/background">Background vector created by starline - www.freepik.com</a>
 - Backgroung images and laptop:
     - [Background vector created by freepik - www.freepik.com](https://www.freepik.com/free-photos-vectors/background)
     - [Technology photo created by freepik - www.freepik.com](https://www.freepik.com/free-photos-vectors/technology)

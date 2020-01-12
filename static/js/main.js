@@ -1,14 +1,17 @@
 $(window).on('load resize', function(){
-    newWidth = Math.floor($('#products').width()/250)
-    console.log(newWidth)
-    $('.products-wrapper').css({'width' : (254*newWidth)+"px"})
-})
+    maxLiCount = Math.floor($('#products').width()/250)
+
+    $('.custom-media-list-products').css({
+        'max-width' : (250*maxLiCount)+"px"})
+});
 
 $(document).ready(function(){
-    $(window).on('resize', function(){
-        newWidth = Math.floor($('#products').width()/250)
-        $('.products-wrapper').css({'width' : (254*newWidth)+"px"})
-    })
+    $(window).on('load resize', function(){
+        maxLiCount = Math.floor($('#products').width()/250)
+
+        $('.custom-media-list-products').css({
+            'max-width' : (250*maxLiCount)+"px"})
+    }).trigger("resize");
     
     $("#close-messages-modal").on('click', function(){
         $("#messages-modal").removeClass('show')

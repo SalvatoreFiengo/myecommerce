@@ -1,7 +1,6 @@
 from django.db import models
-from django.db.models.signals import post_save
+from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from helper.variables import background
 
 
 class Product(models.Model):
@@ -39,16 +38,20 @@ class Product(models.Model):
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=None, blank=False)
     discount = models.DecimalField(max_digits=9, decimal_places=2, default=0, editable=False)
     stock = models.DecimalField(max_digits=6, decimal_places=0, default=0)
-    background = models.CharField(max_length=100, default="/media/images/background.jpg", editable=False)
     image = models.ImageField(upload_to='images', blank=True, null=True)
 
     def __str__(self):
         return self.name
 
-@receiver(post_save, sender=Product)
+@receiver(pre_save, sender=Product)
 def save_product_background(sender, instance, **kwargs):
-    """after instance of Product model is saved, check if its category is in 'background dict'
-    if so assign it to the new product background parameter"""
+    """after instance of Product model is saved, check if offer is greater of 0 
+    if so assign a discount to the product """
 
-    if instance.category in background:
-        instance.background = background[instance.category]
+    if instance.offer > 0:
+        offer_amount = (instance.offer/100)*instance.price
+        instance.discount = instance.price - offer_amount
+        instance.discount = "%.2f" % instance.discount
+        
+  
+

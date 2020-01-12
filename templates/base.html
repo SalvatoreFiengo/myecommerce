@@ -57,19 +57,11 @@
             {% if categories %}
             <div>
                 <nav class="navbar navbar-info pt-1 mb-0">
-                    <div class="float-right ">
                         <ul class="nav navbar-nav m-0">
                             <li>
-                                <div class="navbar-form m-0">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                            {% include 'filters.html' with categories=categories%}
-                                        </div>
-                                    </div>
-                                </div>
+                                {% include 'filters.html' with categories=categories%}
                             </li>
                         </ul>
-                    </div>
                 </nav>
             </div>
             {% endif %}

@@ -18,7 +18,7 @@
         {% for product in carousel_items %}
         <div class="item {% if forloop.counter == 1 %} active {% endif %}">
             {% if product.image %}
-            <img class="carousel-background" src="{% static product.background %}"
+            <img class="carousel-background" src="{% static background|with_name:product.category %}"
                 alt="background image">
             <figure class="figure">
                 <div class="product-img-vertical-fix"></div>
@@ -28,7 +28,7 @@
                 </figcaption>
             </figure>
             {% else %}
-            <img class="carousel-background" src="{% static product.background %}"
+            <img class="carousel-background" src="{% static background|with_name:product.category %}"
                 alt="background image">
             <figure class="figure">
                 <div class="product-img-vertical-fix"></div>

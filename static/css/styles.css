@@ -70,6 +70,10 @@ body {
     margin-left: 1rem;
 }
 
+.ml-2 {
+    margin-left: 2rem;
+}
+
 .mb-0 {
     margin-bottom: 0;
 }
@@ -101,9 +105,16 @@ body {
 .bg-light {
     background-color: #f8f9fa;
 }
+.bg-through {
+    background-color: rgba(255,255,255,0.5);
+}
 
 .row {
     margin: 0;
+}
+
+.modal {
+    top: 110px;
 }
 
 .panel {
@@ -188,28 +199,31 @@ header {
 }
 
 .panel-wrapper {
-    margin-bottom: 0;
+    display: inline-block;
     margin-top: 5rem;
     margin-bottom: 1rem;
-    background-color: rgba(255, 255, 255, 0.5);
+    width: 85%; 
 }
 
 .products-wrapper {
     display: block;
-    margin: 0 auto;
 }
 
 .custom-media-list-products {
-    margin-left: 2px;
-    padding: 0;
+    margin: 0 auto;
+    padding: 2rem 0 0 0;
     list-style: none;
-    text-align: left;
-    display: inline-block;
+    display: inline-flex;
+    flex-wrap: wrap;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .custom-media-list-products>li {
-    width: 250px;
-    padding: 0px
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .thumbnail {
@@ -330,7 +344,7 @@ textarea[name=bio] {
     padding: 5px 10px;
 }
 
-.nav-pills>li>.btn {
+nav .btn {
     width: 60px;
 }
 
@@ -422,8 +436,8 @@ textarea[name=bio] {
     }
     .carousel-caption {
         left: 65%;
-        right: 10%;
-        bottom: 25%;
+        right: 18%;
+        bottom: 30%;
     }
     .carousel-caption-wrapper>p {
         font-size: 2rem;
@@ -442,4 +456,11 @@ textarea[name=bio] {
         margin-right: inherit;
         width: auto;
     }
+}
+@media (min-width: 1200px){
+    .figure {
+        margin-left: 3vw;
+        padding-top: 0;
+    }
+    
 }

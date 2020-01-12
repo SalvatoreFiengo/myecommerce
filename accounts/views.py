@@ -4,10 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Userprofile
 from accounts.forms import UserLoginForm, UserRegistrationForm, UserProfileForm, UserForm
+from helper.variables import background
 
 def index(request):
     """return index.html file"""
-    return render(request, "index.html")
+    return render(request, "index.html",{"background_image": background["default"]})
 
 @login_required
 def logout(request):
@@ -34,7 +35,7 @@ def login(request):
                 login_form.add_error(None, "your username or password is incorrect")
     else:
         login_form = UserLoginForm()
-    return render(request, "login.html", {"login_form": login_form})
+    return render(request, "login.html", {"login_form": login_form, "background_image":background["default"]})
 
 def registration(request):
     """Render the registration page"""
@@ -62,14 +63,14 @@ def registration(request):
 def user_profile(request):
     """Renders the user profile page"""
     user = User.objects.get(pk=request.user.id)
-    return render(request, 'profile.html', {'user': user, 'profile': user.userprofile})
+    return render(request, 'profile.html', {'user': user, 'profile': user.userprofile, "background_image":background["default"]})
 
 @login_required
 def edit_profile(request):
     """User can Edit Profile page"""
     user_form = UserForm(instance=request.user)
     profile_form = UserProfileForm(instance=request.user.userprofile)
-    return render(request, 'edit_profile.html', {"user_form": user_form,"profile_form": profile_form})
+    return render(request, 'edit_profile.html', {"user_form": user_form,"profile_form": profile_form, "background_image":background["default"]})
 
 def update_profile(request):
     """User can update its profile via Profile.html and related form"""
@@ -88,5 +89,6 @@ def update_profile(request):
         profile_form = UserProfileForm(instance=request.user.userprofile)
     return render(request, 'profile.html', {
         'user_form': user_form,
-        'profile_form': profile_form
+        'profile_form': profile_form,
+        "background_image":background["default"]
     })
