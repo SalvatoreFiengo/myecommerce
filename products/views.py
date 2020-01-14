@@ -20,7 +20,7 @@ def all_products(request):
             products = Product.objects.all()
         else:
             products = Product.objects.filter(category=category)
-            if category in background:
+            if category in background.keys():
                 selected_background=background[category]
             else:
                 selected_background=background["default"]
@@ -40,7 +40,10 @@ def all_products(request):
 
 def product_details(request, pk):
     product = Product.objects.get(pk=pk)
-    selected_background = background[product.category]
+    if product.category in background.keys():
+        selected_background = background[product.category]
+    else: 
+        selected_background=background["default"]
     if product:
         return render(request, 
             "product-detail.html",

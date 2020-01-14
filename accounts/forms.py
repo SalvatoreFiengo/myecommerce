@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import SelectDateWidget, DateField
+from django.forms import SelectDateWidget, DateField, BooleanField
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Userprofile
@@ -53,7 +53,9 @@ class UserProfileForm(forms.ModelForm):
     birth_date = DateField(
         widget=SelectDateWidget(years=previous_years(100))
     )
+    reseller = BooleanField(required=False)
     class Meta:
         model = Userprofile
         fields = '__all__'
+        
 

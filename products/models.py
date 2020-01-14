@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
@@ -31,6 +32,7 @@ class Product(models.Model):
         (HE_BE, 'Health & Beauty'),        
     )
 
+    vendor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, editable=False)
     name = models.CharField(max_length=254, default='')
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)

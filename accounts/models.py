@@ -30,6 +30,6 @@ def save_user_profile(sender, instance, **kwargs):
             if instance.userprofile.has_logged_in == False:
                 instance.userprofile.has_logged_in = True
             instance.userprofile.save()
-        except AssertionError as e:
-            print(e)
+        except: 
+            pass
 
