@@ -8,7 +8,7 @@ from helper.variables import background
 
 def index(request):
     """return index.html file"""
-    return render(request, "index.html",{"background_image": background["default"]})
+    return redirect(reverse('products'))
 
 @login_required
 def logout(request):
@@ -65,7 +65,6 @@ def user_profile(request):
     user = User.objects.get(pk=request.user.id)
     return render(request, 'profile.html', {'user': user, 'profile': user.userprofile, "background_image":background["default"]})
 
-@login_required
 def edit_profile(request):
     """User can Edit Profile page"""
     user_form = UserForm(instance=request.user)

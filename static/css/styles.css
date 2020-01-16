@@ -62,6 +62,10 @@ body {
     margin-top: 2rem;
 }
 
+.mt-5{
+    margin-top: 5rem;
+}
+
 .mr-1 {
     margin-right: 1rem;
 }
@@ -211,7 +215,6 @@ header {
 
 .custom-media-list-products {
     margin: 0 auto;
-    padding: 2rem 0 0 0;
     list-style: none;
     display: inline-flex;
     flex-wrap: wrap;
@@ -237,8 +240,8 @@ header {
 }
 
 .custom-thumbnail {
-    height: 500px;
     width: 250px;
+    padding-bottom: 1.5rem;
 }
 
 .text-field {
@@ -264,7 +267,25 @@ header {
     border-radius: 4px;
     font-size:1.5rem;
 }
-input[name=new_password1], input[name=new_password2], input[name=first_name], input[name=last_name], input[name=location] {
+
+.preview {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+input[name=new_password1], 
+input[name=new_password2], 
+input[name=first_name], 
+input[name=last_name], 
+input[name=location],
+input[name=name],
+input[name=price],
+input[name=stock],
+select[name=offer],
+select[name=category],
+p.image-input-fake {
     display: block;
     width: 100%;
     height: 38px;
@@ -281,6 +302,20 @@ input[name=new_password1], input[name=new_password2], input[name=first_name], in
     -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+p.image-input-fake {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+input[name=image] {
+    opacity:0;
+    width: 100%;
 }
 
 select[name=birth_date_day], select[name=birth_date_month], select[name=birth_date_year] {
@@ -310,7 +345,8 @@ select[name=birth_date_year] {
     border-bottom-right-radius: 4px;
 }
 
-textarea[name=bio] {
+textarea[name=bio],
+#id_description {
     display: block;
     width: 100%;
     height: auto;
