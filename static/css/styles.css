@@ -117,8 +117,8 @@ body {
     margin: 0;
 }
 
-.modal {
-    top: 110px;
+.baseline-centered {
+    vertical-align: baseline;
 }
 
 .panel {
@@ -206,7 +206,6 @@ header {
     display: inline-block;
     margin-top: 5rem;
     margin-bottom: 1rem;
-    width: 85%; 
 }
 
 .products-wrapper {
@@ -229,19 +228,14 @@ header {
     justify-content: center;
 }
 
-.thumbnail {
-    margin: 0 auto;
-    margin-bottom: 15px;
-}
-
-.thumbnail>img {
+.thumbnail>img, .thumbnail>a>img {
     height: 140px;
     max-width: 240px;
 }
 
 .custom-thumbnail {
+    text-align: center;
     width: 250px;
-    padding-bottom: 1.5rem;
 }
 
 .text-field {
@@ -270,7 +264,7 @@ header {
 
 .preview {
     height: 400px;
-    overflow-y: scroll;
+    overflow-y: auto;
     border: 1px solid #cccccc;
     border-radius: 4px;
 }
@@ -494,6 +488,9 @@ nav .btn {
     }
     .carousel-caption-wrapper>p {
         font-size: 2rem;
+    }
+    .thumbnail {
+        margin: 1rem;
     }
 }
 

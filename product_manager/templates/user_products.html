@@ -4,133 +4,183 @@
 {% block title %}: Edit your products {% endblock %}
 {% block page_header %} - Edit your products {% endblock %}
 {% block content %}
-<div class="panel-wrapper panel panel-info mt-5 mb-1">
-    <div class="panel-heading">
-        <h3 class="text-white">Edit your products</h3>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                <form method="POST" enctype="multipart/form-data" action="{% url 'edit_user_products'%}">
-                    <div style="display:none">
-                        <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
-                    </div>
-                    <h3>Product Details:</h3>
-                    <table class="table table-condensed table-bordered">
-                        <thead>
-                            <tr colspan=2>
-                                <th>#</th>
-                                <th>Personal details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <p>Name :</p>
-                                </th>
-                                <td>
-                                    {{user_product_form.name}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <p>Category :</p>
-                                </th>
-                                <td>
-                                    {{user_product_form.category}}
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <p>Image :</p>
-                                </th>
-                                <td>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <span id="product-image-insert">Upload</span>
-                                        </div>
-                                        <p class="image-input-fake">{{user_product_form.image}}</p>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <p>Price :</p>
-                                </th>
-                                <td>
-                                    {{user_product_form.price}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <p>Offer :</p>
-                                </th>
-                                <td>
-                                    {{user_product_form.offer}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <p>Quantity :</p>
-                                </th>
-                                <td>{{user_product_form.stock}}</td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Description :
-                                </th>
-                                <td>{{user_product_form.description}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
+<div id="user-add-product-modal" class="custom_top modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    Edit your products </h4>
+            </div>
+            <form method="POST" enctype="multipart/form-data" action="{% url 'edit_user_products'%}">
+                <div class="modal-body">
                     <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                            <button type="submit" class="btn btn-success">Add new</button>
+                        <div id="add-product-page-1" class="col-xs-12">
+                            <table class="table table-condensed table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">
+                                            <p>Name :</p>
+                                        </th>
+                                        <td>
+                                            {{user_product_form.name}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <p>Category :</p>
+                                        </th>
+                                        <td>
+                                            {{user_product_form.category}}
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <p>Image :</p>
+                                        </th>
+                                        <td>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <span id="product-image-insert">Upload</span>
+                                                </div>
+                                                <p class="image-input-fake">{{user_product_form.image}}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Description :
+                                        </th>
+                                        <td>{{user_product_form.description}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="add-product-page-2" class="col-xs-12">
+                            <table class="table table-condensed table-bordered">
+                                <thead></thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">
+                                            <p>Price :</p>
+                                        </th>
+                                        <td>
+                                            {{user_product_form.price}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <p>Offer :</p>
+                                        </th>
+                                        <td>
+                                            {{user_product_form.offer}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <p>Quantity :</p>
+                                        </th>
+                                        <td>{{user_product_form.stock}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </form>
+                    <div class="row">
+                        <div class="col-xs-4 text-center">
+                            <button type="button" id="add-product-prev" class="btn btn-info">Prev</button>
+                            
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <button type="button" id="add-product-next" class="btn btn-info">Next</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="user-product-submit" class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="submit" class="btn btn-success">Add your product</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="row">
+    <div id="user-products" class="col-xs-12">
+        <div class="panel-wrapper panel panel-info mt-5 mb-1">
+            <div class="panel-heading">
+                <h3 class="text-white">Edit your products</h3>
             </div>
-            {% if products %}
-            <div id="user-products" class="col-xs-12 col-sm-12 col-md-8">
-                <div id="preview-wrapper">
-                    <h3>Preview :</h3>
-                    <ul class="custom-media-list-products list-inline preview p-0">
-                        {% for product in products %}
-                        <li>
-                            <div class="thumbnail custom-thumbnail">
-                                {% if product.image %}
-                                <img src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
-                                {% else %}
-                                <img src="{% static 'media/images/default-product.svg' %}" alt="default">
-                                {% endif %}
-                                <div class="caption">
-                                    <h3>{{product.name|truncatechars:18}}</h3>
-                                    <hr>
-                                    {%if product.offer > 0 %}
-                                    <p><strike>{{ product.price }} &euro;</strike> now <u
-                                            class="text-danger">{{ product.discount }} &euro;</u></p>
-                                    {% else %}
-                                    <p>{{ product.price }} &euro;</p>
-                                    {% endif %}
-                                    {% if product.stock > 10 %}
-                                    <p class="text-success">Available</p>
-                                    {%elif product.stock == 0 %}
-                                    <p class="text-danger">No avalaibility at the moment</p>
-                                    {%elif product.stock > 0 and product.stock < 10 %}
-                                    <p class="text-warning"><u>Only {{ product.stock }} left in stock</u></p>
-                                    {% endif %}
-                                    <hr>
-                                    <a href="{% url 'product_details' product.id%}">More details here</a>
-                                </div>
-                            </div>
-                        </li>
-                        {% endfor %}
-                    </ul>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="#user-products" 
+                            role="button"
+                            class="btn btn-success" 
+                            data-toggle="modal" 
+                            data-target="#user-add-product-modal"> Add a product</a>
+                    </div>
+                    <div class="col-xs-12">
+                        <div id="preview-wrapper">
+                            <h3>Preview :</h3>
+                            <ul class="custom-media-list-products list-inline preview p-0">
+                                {% for product in products %}
+                                <li>
+                                    <div class="thumbnail custom-thumbnail">
+                                        {% if product.image %}
+                                        <img src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
+                                        {% else %}
+                                        <img src="{% static 'media/images/default-product.svg' %}" alt="default">
+                                        {% endif %}
+                                        <div class="caption">
+                                            <h3>{{product.name|truncatechars:18}}</h3>
+                                            <hr>
+                                            {%if product.offer > 0 %}
+                                            <p><strike>{{ product.price }} &euro;</strike> now <u
+                                                    class="text-danger">{{ product.discount }} &euro;</u></p>
+                                            {% else %}
+                                            <p>{{ product.price }} &euro;</p>
+                                            {% endif %}
+                                            {% if product.stock > 10 %}
+                                            <p class="text-success">Available</p>
+                                            {%elif product.stock == 0 %}
+                                            <p class="text-danger">No avalaibility at the moment</p>
+                                            {%elif product.stock > 0 and product.stock < 10 %}
+                                            <p class="text-warning"><u>Only {{ product.stock }} left in stock</u></p>
+                                            {% endif %}
+                                            <hr>
+                                            <a href="{% url 'product_details' product.id%}">More details here</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                                <li>
+                                    <div class="thumbnail custom-thumbnail">
+                                        <a href="#user-products" data-toggle="modal" data-target="#user-add-product-modal">
+                                            <img src="{% static 'media/images/hand_add.jpg' %}" alt="add a product">
+                                        </a>
+                                        <div class="caption">
+                                            <h3>Add a Product</h3>
+                                            <hr>
+                                            <p>Here you will see the price</p>
+                                            <p class="text-success">Here the availability</p>
+                                            <hr>
+                                            <a href="#user-products" disabled>a "More details" link here</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            {% endif %}
         </div>
     </div>
 </div>

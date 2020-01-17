@@ -29,3 +29,5 @@ Media:
 - Beauty section: 
     - lotion:
         [Background photo created by freepik - www.freepik.com](https://www.freepik.com/free-photos-vectors/background)
+- add a product: 
+<a href="https://www.freepik.com/free-photos-vectors/background">Background photo created by rawpixel.com - www.freepik.com</a>

@@ -4,23 +4,25 @@
 {% if messages %}
 <div id="messages-modal" class="modal show" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header {%if user.is_authenticated %}bg-success {% else %} bg-warning {% endif %}">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">
-              Login Status </h4>
-        </div>
-        <div class="modal-body">
-        {% for message in messages %}
-          <p>{{message}}</p>
-        {% endfor %}
-        </div>
-        <div class="modal-footer">
-          <button id="close-messages-modal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div><!-- /.modal-content -->
+        <div class="modal-content">
+            <div class="modal-header {%if user.is_authenticated %}bg-success {% else %} bg-warning {% endif %}">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    Login Status </h4>
+            </div>
+            <div class="modal-body">
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <button id="close-messages-modal" type="button" class="btn btn-default"
+                    data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+</div><!-- /.modal -->
 {% endif %}
 <div class="row">
     <div id="products" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -56,7 +58,8 @@
                                 <hr>
                                 <form action="{% url 'add_to_cart' product.id %}">
                                     <div class="input-group">
-                                        <input name="quantity" type="number" min="0" max="{{product.stock}}" class="form-control" placeholder="Quantity">
+                                        <input name="quantity" type="number" min="0" max="{{product.stock}}"
+                                            class="form-control" placeholder="Quantity">
                                         <span class="input-group-btn">
                                             <button class="btn btn-success" type="submit">Add to Cart</button>
                                         </span>

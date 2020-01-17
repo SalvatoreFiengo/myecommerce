@@ -76,9 +76,9 @@
                         </tr>
                         <tr>
                             <th>
-                                <p>Tick the ceckbox if you are a vendor</p>
+                                <p>Vendor Profile</p>
                             </th>
-                            <td>{{ profile.reseller }}</td>
+                            <td>{%if profile.reseller%}On{%else%}Off{%endif%}</td>
                         </tr>
                     </tbody>
                 </table>
