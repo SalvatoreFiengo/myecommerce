@@ -1,41 +1,86 @@
 {% extends 'base.html' %}
-{% load static from staticfiles %}
+{% load staticfiles %}
 {% load bootstrap_tags %}
+{% block title %}: Edit your products {% endblock %}
+{% block page_header %} - Edit your products {% endblock %}
 
 {% block content %}
-<div class="row row-flex">
-    {% for item in cart_items %}
-    
-    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-display">
-        
-        <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
-        
-        <div class="caption">
-            <h3>{{ item.product.name }}</h3>
-            <p class="product-description">{{ item.product.description }}</p>
-            <p>{{ item.product.price }}</p>
-            <p>
-                <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="exampleInputAmount" class="sr-only">New Qty</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">Qty</div>
-                            <input name="quantity" type="number" min="0" max="999" class="form-control">
-                            <div class="input-group-addon">{{item.quantity}}</div>
+<div class="row">
+    <div id="user-cart" class="col-xs-12 col-md-6">
+        <div class="panel-wrapper panel panel-info bg-through mt-5 mb-1">
+            <div class="panel-heading">
+                <h3 class="text-white">Your Shopping List</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table table-condensed table-bordered">
+                            {% if cart_items %}
+                            <thead>
+                                <tr colspan=2>
+                                    <th><p>Name</p></th>
+                                    <th><p>Price</p></th>
+                                    <th><p>add</p></th>
+                                    <th><p>delete</p></th>
+                                </tr>
+                            </thead>
+                            {% endif %}
+                            <tbody>
+                                {% for item in cart_items %}
+                                <tr>
+                                    <td>
+                                        <p>{{ item.product.name }}</p>
+                                    </td>
+                                    <td>
+                                        {% if item.product.offer > 0 %}
+                                        <p>{{ item.product.discount }}</p>
+                                        {% else %}
+                                        <p>{{ item.product.price }}</p>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">Qty</div>
+                                                    <input name="quantity" type="number" min="0" max="999" class="form-control">
+                                                    <div class="input-group-addon">{{item.quantity}}</div>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger" href="{% url 'del_from_cart' item.product.id %}" role="button"><i class="fas fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr class="text-center"><td colspan="2">You shopping cart is empty</td></tr>
+                                {% endfor %}   
+                                {% if cart_items %}  
+                                <tr>
+                                    <th scope="row" colspan="4">
+                                        <p>Total: {{ total }} &euro;</p>
+                                    </th>
+                                </tr>
+                                {% endif %}
+                            </tbody>
+                        </table> 
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                {% if cart_items %}
+                                <a  class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+                                {% endif %}
+                                <a class="btn btn-primary" href="{% url 'index' %}" 
+                                    role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Back</a>
+                            </div>   
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
-                </form>
-            </p>
+                </div>
+            </div>
         </div>
     </div>
-    {% endfor %}
 </div>
-<div class="row">
-    <p>Total</p>
-    <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
-    <a  class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
-</div>
-<!-- href=" url 'checkout' " -->
 {% endblock %}

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from helper.variables import categories
 
 
 class Product(models.Model):
@@ -25,11 +26,11 @@ class Product(models.Model):
     CL_SH_WH = "Clothes, Shoes & Whatces"
     HE_BE = "Health & Beauty"
     CATEGORY_CHOICES = (
-        (EL_CO, 'Electronic & Computers'),
-        (MO_TV_MS_GA, 'Movies, TV, Music & Games'),
-        (TO_CH_BA, 'Toys, Children & Baby'),
-        (CL_SH_WH, 'Clothes, Shoes & Whatces'),
-        (HE_BE, 'Health & Beauty'),        
+        (EL_CO, categories["EL_CO"]),
+        (MO_TV_MS_GA, categories["MO_TV_MS_GA"]),
+        (TO_CH_BA, categories["TO_CH_BA"]),
+        (CL_SH_WH, categories["CL_SH_WH"]),
+        (HE_BE, categories["HE_BE"]),        
     )
 
     vendor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, editable=False)

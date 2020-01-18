@@ -14,7 +14,7 @@ def index(request):
 def logout(request):
     """log user out"""
     auth.logout(request)
-    messages.success(request, "You have successfully logged out")
+    messages.success(request, "You have successfully logged out", extra_tags="Login Status")
     return redirect(reverse("index"))
 
 def login(request):
@@ -29,7 +29,7 @@ def login(request):
                                     password=request.POST["password"])
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "Hi {0}. You are successfully logged in".format(request.POST["name"]))
+                messages.success(request, "Hi {0}. You are successfully logged in".format(request.POST["name"]), extra_tags="Login Status")
                 return redirect(reverse('index'))
             else:
                 login_form.add_error(None, "your username or password is incorrect")
@@ -49,11 +49,11 @@ def registration(request):
                                     password=request.POST['password1'])
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully registered")
+                messages.success(request, "You have successfully registered", extra_tags="Registation Status")
 
                 return redirect('edit_profile')
             else:
-                messages.error(request, "Unable to register your account at this time")
+                messages.error(request, "Unable to register your account at this time", extra_tags="Registration Status")
     else:
         registration_form = UserRegistrationForm()
     return render(request, 'registration.html', {
@@ -80,7 +80,7 @@ def update_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, ('Your profile was successfully updated!'))
+            messages.success(request, ('Your profile was successfully updated!'), extra_tags="Profile Updated")
             return redirect(reverse('index'))
         else:
             messages.error(request, ('Please correct the error below.'))

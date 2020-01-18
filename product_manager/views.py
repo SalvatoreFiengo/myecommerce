@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from products.models import Product
 from .forms import AddProductForm
 from django.contrib.auth.models import User
@@ -16,16 +16,20 @@ def add_or_edit_a_product(request, pk=None):
     """Create a view that allows us to add or edit a product
     depending if the product ID(pk) is null or not"""
 
-    product = get_object_or_404(Product, pk=pk) if pk else None
+    all_products = Product.objects.filter(vendor=request.user.id).order_by('-offer')
+    selected_product = get_object_or_404(Product, pk=pk) if pk else None
 
     if request.method == "POST":
-        user_product_form = AddProductForm(request.POST, request.FILES, instance=product)
+        user_product_form = AddProductForm(request.POST, request.FILES, instance=selected_product)
         if user_product_form.is_valid():
-            product = user_product_form.save(commit=False)
-            product.vendor = request.user
-            product.save()
-            print(request.user.id)
+            selected_product = user_product_form.save(commit=False)
+            selected_product.vendor = request.user
+            selected_product.save()
             return redirect("user_products")
     else: 
-        user_product_form = AddProductForm(instance=product)
-    return render(request, "user_products.html", {"user_product_form": user_product_form, "background_image":background["default"]})
+        user_product_form = AddProductForm(instance=selected_product)
+    return render(request, "user_products.html", {"products":all_products, 
+        "user_product_form": user_product_form, 
+        "background_image":background["default"],
+        "modal": True
+        })

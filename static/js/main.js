@@ -1,15 +1,19 @@
 $(window).on('load resize', function(){
-    maxLiCount = Math.floor($('#products').width()/250) || Math.floor($('#user-products').width()/250)
+    maxLiCount = Math.floor($('#products').width()/270) || Math.floor($('#user-products').width()/270) || Math.floor($('#user-cart').width()/270);
+    ulMaxWidth = 270*maxLiCount;
+    if (maxLiCount == 1) {
+        ulMaxWidth = 250;
+    }
     $('.custom-media-list-products').css({
-        'max-width' : (250*maxLiCount)+"px",
+        'max-width' : (ulMaxWidth)+"px",
         'min-width':"250px"})
 });
 
 $(document).ready(function(){
 
     // messages-modal
-    $("#close-messages-modal").on('click', function(){
-        $("#messages-modal").removeClass('show')
+    $(".close-modal").on('click', function(){
+        $(".opened").removeClass('show')
     })
     // prev and next buttons in user products modal form
     $("#add-product-page-2, #add-product-prev, #user-product-submit").hide()

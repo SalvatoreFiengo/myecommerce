@@ -13,9 +13,3 @@ def get_products_for_carousel(products):
             showlist.append(product)
     carousel_items = sorted(showlist, key=lambda product: product.discount, reverse=True)
     return carousel_items
-
-def get_categories(products):
-    categories = []
-    for product in products:
-        categories.append(product.category)
-    return categories
