@@ -137,6 +137,12 @@ header {
     height: 52px;
     max-height: 52px;
 }
+.alert {
+    padding: 8px 12px;
+}
+form .btn {
+    min-width: 70px;
+}
 
 /* carousel */
 
@@ -231,7 +237,7 @@ header {
     justify-content: center;
 }
 
-.thumbnail>img, .thumbnail>a>img {
+.thumbnail>img {
     height: 140px;
     max-width: 240px;
 }
@@ -391,12 +397,13 @@ textarea[name=bio],
 /* navbar-collapse behaviour */
 
 
-nav .btn {
+nav .btn-sm {
     width: 60px;
 }
 
-.nav-pills>li+li {
-    margin: 0;
+.navbar-default .navbar-nav>li>a:hover{
+    background-color: #fff;
+    color: #1995dc;
 }
 
 .collapsing {
@@ -451,9 +458,7 @@ nav .btn {
 }
 
 @media (min-width: 768px) {
-    .nav-pills>li+li {
-        margin-left: 2px;
-    }
+
     .navbar-form .input-group>.form-control {
         width: auto;
     }

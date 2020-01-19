@@ -10,7 +10,9 @@
     </div>
     <div class="panel-body">
         <form method="post" action="{% url 'update_profile'%}">
-            {% csrf_token %}
+            <div style="display:none">
+                <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+            </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <table class="table table-condensed">

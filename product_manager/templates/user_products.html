@@ -11,13 +11,17 @@
             <div class="modal-header bg-primary">
                 <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">
+                <h4 class="modal-title text-white">
                     Add a product </h4>
             </div>
-            <form method="POST" enctype="multipart/form-data" action="{% url 'edit_user_products'%}">
+            <form method="POST" enctype="multipart/form-data" action="{% url 'add_product'%}" novalidate>
+                <div style="display:none">
+                    <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+                </div>
                 <div class="modal-body">
                     <div class="row">
                         <div id="add-product-page-1" class="col-xs-12">
+
                             <table class="table table-condensed table-bordered">
                                 <tbody>
                                     <tr>
@@ -26,6 +30,10 @@
                                         </th>
                                         <td>
                                             {{user_product_form.name}}
+                                            {% if user_product_form.name.errors %}
+                                            <p class="alert alert-danger m-0">
+                                                {{user_product_form.name.errors.as_text|cut:"* "}}</p>
+                                            {% endif %}
                                         </td>
                                     </tr>
                                     <tr>
@@ -34,7 +42,6 @@
                                         </th>
                                         <td>
                                             {{user_product_form.category}}
-
                                         </td>
                                     </tr>
                                     <tr>
@@ -54,7 +61,13 @@
                                         <th>
                                             Description :
                                         </th>
-                                        <td>{{user_product_form.description}}</td>
+                                        <td>
+                                            {% if user_product_form.description.errors %}
+                                            <p class="alert alert-danger m-0">
+                                                {{user_product_form.description.errors.as_text|cut:"* "}}</p>
+                                            {% endif %}
+                                            {{user_product_form.description}}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -69,6 +82,10 @@
                                         </th>
                                         <td>
                                             {{user_product_form.price}}
+                                            {% if user_product_form.price.errors %}
+                                            <p class="alert alert-danger m-0">
+                                                {{user_product_form.price.errors.as_text|cut:"* "}}</p>
+                                            {% endif %}
                                         </td>
                                     </tr>
                                     <tr>
@@ -83,7 +100,13 @@
                                         <th>
                                             <p>Quantity :</p>
                                         </th>
-                                        <td>{{user_product_form.stock}}</td>
+                                        <td>
+                                            {{user_product_form.stock}}
+                                            {% if user_product_form.stock.errors %}
+                                            <p class="alert alert-danger m-0">
+                                                {{user_product_form.stock.errors.as_text|cut:"* "}}</p>
+                                            {% endif %}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -106,7 +129,13 @@
                 <div id="user-product-submit" class="modal-footer">
                     <div class="row">
                         <div class="col-xs-12 text-center">
-                            <button type="submit" class="btn btn-success">Add your product</button>
+                            <button type="submit" class="btn btn-success">
+                                {% if edit %}
+                                Edit your product
+                                {% else %}
+                                Add your product
+                                {% endif %}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -123,8 +152,9 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12">
-                        <a href="#user-products" role="button" class="btn btn-success" data-toggle="modal"
-                            data-target="#user-add-product-modal"> Add a product</a>
+                        <form action="{% url 'edit_selected_product' %}">
+                            <button type="submit" class="btn btn-success"> Add a product</button>
+                        </form>
                     </div>
                     <div class="col-xs-12">
                         <div id="preview-wrapper">
@@ -157,23 +187,45 @@
                                             <hr>
                                             <a href="{% url 'product_details' product.id%}">More details here</a>
                                             <hr>
-                                            <form action="{% url 'edit_selected_product' product.id %}">
-                                                <div class="input-group">
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-success" type="submit">Edit</button>
-                                                    </span>
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <form action="{% url 'edit_selected_product' product.id %}"
+                                                        method="POST">
+                                                        <div style="display:none">
+                                                            <input type="hidden" value="{{ csrf_token }}"
+                                                                name="csrfmiddlewaretoken">
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-success"
+                                                                    type="submit">Edit</button>
+                                                            </span>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </form>
+                                                <div class="col-xs-6">
+                                                    <form action="{% url 'delete_product' product.id %}" method="POST">
+                                                        <div style="display:none">
+                                                            <input type="hidden" value="{{ csrf_token }}"
+                                                                name="csrfmiddlewaretoken">
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-danger"
+                                                                    type="submit">Delete</button>
+                                                            </span>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
                                 {% endfor %}
                                 <li>
+
                                     <div class="thumbnail custom-thumbnail">
-                                        <a href="#user-products" data-toggle="modal"
-                                            data-target="#user-add-product-modal">
-                                            <img src="{% static 'media/images/hand_add.jpg' %}" alt="add a product">
-                                        </a>
+                                        <img src="{% static 'media/images/hand_add.jpg' %}" alt="add a product">
                                         <div class="caption">
                                             <h3>Add a Product</h3>
                                             <hr>
@@ -181,6 +233,19 @@
                                             <p class="text-success">Here the availability</p>
                                             <hr>
                                             <a href="#user-products" disabled>a "More details" link here</a>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <form action="{% url 'edit_selected_product' %}">
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-success"
+                                                                    type="submit">Add</button>
+                                                            </span>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
