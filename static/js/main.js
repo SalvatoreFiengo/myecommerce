@@ -23,9 +23,26 @@ $(document).ready(function(){
         $("#add-product-page-2, #add-product-prev, #user-product-submit").hide()
     })
     $("#add-product-next").on("click", function(){
-        // check validation name and description. 
-        // submit error due to validation (change model then js or manual focus?)
         $("#add-product-page-1, #add-product-next").hide()
         $("#add-product-page-2, #add-product-prev, #user-product-submit").show()      
+    })
+    // cart plus minus 
+    $('.plus').on('click', function(){
+        max=$(this).siblings("input").attr('max');
+        inputValue=$(this).siblings("input").val();
+        if(inputValue<max){
+            inputValue++
+        }
+        $(this).siblings("input").val(inputValue);
+        $("#adjust-cart").submit()
+    })
+    $('.minus').on('click', function(){
+        min=$(this).siblings("input").attr('min');
+        inputValue=$(this).siblings("input").val();
+        if(inputValue>min){
+            inputValue--
+        }
+        $(this).siblings("input").val(inputValue);
+        $("#adjust-cart").submit()
     })
 })
