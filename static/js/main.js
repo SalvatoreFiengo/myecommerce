@@ -1,6 +1,6 @@
 $(window).on('load resize', function(){
-    maxLiCount = Math.floor($('#products').width()/270) || Math.floor($('#user-products').width()/270) || Math.floor($('#user-cart').width()/270);
-    ulMaxWidth = 270*maxLiCount;
+    maxLiCount = Math.floor($('#products').width()/270) || Math.floor($('#user-products').width()/270)
+    ulMaxWidth = 278*maxLiCount;
     if (maxLiCount == 1) {
         ulMaxWidth = 250;
     }

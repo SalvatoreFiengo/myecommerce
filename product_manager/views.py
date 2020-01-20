@@ -32,6 +32,7 @@ def add_or_edit_a_product(request, pk=None):
             selected_product.vendor = request.user
             selected_product.save()
             modal = False  
+            return redirect(reverse('user_products'))
     else: 
         user_product_form = AddProductForm(instance=selected_product)
         modal = True
