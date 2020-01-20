@@ -21,27 +21,26 @@ def add_or_edit_a_product(request, pk=None):
 
     all_products = Product.objects.filter(vendor=request.user.id).order_by('-offer')
     selected_product = get_object_or_404(Product, pk=pk) if pk else None
-
+    edit = True if pk else False
     if request.method == "POST":
-        user_product_form = AddProductForm(instance=selected_product)
+        if pk:
+            user_product_form = AddProductForm(request.POST or None, request.FILES or None, instance=selected_product)
+        else:
+            user_product_form = AddProductForm(request.POST, request.FILES, instance=selected_product)
         if user_product_form.is_valid():
             selected_product = user_product_form.save(commit=False)
             selected_product.vendor = request.user
-            selected_product.save()        
-        return render(request,"user_products.html", {"products":all_products, 
-        "user_product_form": user_product_form, 
-        "background_image":background["default"],
-        "modal": True,
-        "edit":True
-        })
+            selected_product.save()
+            modal = False  
     else: 
         user_product_form = AddProductForm(instance=selected_product)
+        modal = True
         
     return render(request, "user_products.html", {"products":all_products, 
         "user_product_form": user_product_form, 
         "background_image":background["default"],
-        "modal": True,
-        "edit":False
+        "modal": modal,
+        "edit": edit
         })
 def delete_product(request, pk):
     product = get_object_or_404(Product, pk=pk)

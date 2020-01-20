@@ -28,22 +28,28 @@ $(document).ready(function(){
     })
     // cart plus minus 
     $('.plus').on('click', function(){
-        max=$(this).siblings("input").attr('max');
-        inputValue=$(this).siblings("input").val();
+        input=$(this).siblings("input")
+        max=input.attr('max');
+        id=input.attr('data-id')
+        console.log(id)
+        inputValue=input.val();
         if(inputValue<max){
             inputValue++
         }
-        $(this).siblings("input").val(inputValue);
-        $("#adjust-cart").submit()
+        input.val(inputValue);
+        $("#adjust-cart-"+id).submit()
     })
     $('.minus').on('click', function(){
-        min=$(this).siblings("input").attr('min');
-        inputValue=$(this).siblings("input").val();
+        input=$(this).siblings("input")
+        min=input.attr('min');
+        
+        id=input.attr('data-id')
+        inputValue=input.val();
         if(inputValue>min){
             inputValue--
         }
-        $(this).siblings("input").val(inputValue);
-        $("#adjust-cart").submit()
+        input.val(inputValue);
+        $("#adjust-cart-"+id).submit()
     })
     // add a priduct in user prodducts
     $('#add-product-image-link').on('click',function(){
