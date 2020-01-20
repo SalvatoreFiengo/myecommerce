@@ -3,117 +3,119 @@
 {% block page_title %}: {{ user }}'s Profile {% endblock %}
 {% block page_header %} - Profile Page {% endblock %}
 {% block content %}
-<div class="panel-wrapper panel panel-primary bg-through ml-2">
-    <div class="panel-heading">
-        <p>{{ user }}'s Profile Details:</p>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr colspan=2>
-                            <th>#</th>
-                            <th>Personal details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">
-                                <p>First Name</p>
-                            </th>
-                            <td>
-                                {% if user.first_name %}
-                                <p>{{ user.first_name }}</p>
-                                {% else %}
-                                <p>First name not set</p>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <p>Last Name</p>
-                            </th>
-                            <td>
-                                {% if user.last_name %}
-                                <p>{{ user.last_name }}</p>
-                                {% else %}
-                                <p>Last name not set</p>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <p>Birth Date</p>
-                            </th>
-                            <td>
-                                {% if profile.birth_date %}
-                                <p>{{ profile.birth_date}}</p>
-                                {% else %}
-                                <p>Birth date not set</p>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <p>Location</p>
-                            </th>
-                            <td>
-                                {% if profile.location %}
-                                <p>{{ profile.location }}</p>
-                                {% else %}
-                                <p>Location not set</p>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <p>E-mail</p>
-                            </th>
-                            <td>
-                                <p>{{ user.email }}</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <p>Vendor Profile</p>
-                            </th>
-                            <td>{%if profile.reseller%}On{%else%}Off{%endif%}</td>
-                        </tr>
-                    </tbody>
-                </table>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel-wrapper panel panel-primary bg-through ml-2 mt-5">
+            <div class="panel-heading">
+                <p>{{ user }}'s Profile Details:</p>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr>
-                            <th>Bio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                {% if profile.bio %}
-                                <p>{{ profile.bio}}</p>
-                                {% else %}
-                                <p>Profile Bio is empty</p>
-                                {% endif %}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <a href="{% url 'edit_profile' %}" type="button" class="btn btn-primary"> Edit Profile</a>
-                {% if profile.reseller %} 
-                    <a href="{% url 'user_products' %}" type="button" class="btn btn-secondary"> Your Products</a>
-                {% endif %}
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr colspan=2>
+                                    <th>#</th>
+                                    <th>Personal details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <p>First Name</p>
+                                    </th>
+                                    <td>
+                                        {% if user.first_name %}
+                                        <p>{{ user.first_name }}</p>
+                                        {% else %}
+                                        <p>First name not set</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Last Name</p>
+                                    </th>
+                                    <td>
+                                        {% if user.last_name %}
+                                        <p>{{ user.last_name }}</p>
+                                        {% else %}
+                                        <p>Last name not set</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Birth Date</p>
+                                    </th>
+                                    <td>
+                                        {% if profile.birth_date %}
+                                        <p>{{ profile.birth_date}}</p>
+                                        {% else %}
+                                        <p>Birth date not set</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Location</p>
+                                    </th>
+                                    <td>
+                                        {% if profile.location %}
+                                        <p>{{ profile.location }}</p>
+                                        {% else %}
+                                        <p>Location not set</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>E-mail</p>
+                                    </th>
+                                    <td>
+                                        <p>{{ user.email }}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <p>Vendor Profile</p>
+                                    </th>
+                                    <td>{%if profile.reseller%}On{%else%}Off{%endif%}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Bio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {% if profile.bio %}
+                                        <p>{{ profile.bio}}</p>
+                                        {% else %}
+                                        <p>Profile Bio is empty</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <a href="{% url 'edit_profile' %}" type="button" class="btn btn-primary"> Edit Profile</a>
+                        {% if profile.reseller %} 
+                            <a href="{% url 'user_products' %}" type="button" class="btn btn-secondary"> Your Products</a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
 {% endblock %}

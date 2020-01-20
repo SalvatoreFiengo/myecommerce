@@ -45,4 +45,9 @@ $(document).ready(function(){
         $(this).siblings("input").val(inputValue);
         $("#adjust-cart").submit()
     })
+    // add a priduct in user prodducts
+    $('#add-product-image-link').on('click',function(){
+        console.log('clicked')
+        $('#add-product-via-img').submit()
+    })
 })

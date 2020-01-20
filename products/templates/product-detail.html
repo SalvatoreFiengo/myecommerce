@@ -1,102 +1,108 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% block content %}
-<div class="panel-wrapper panel panel-primary ml-2">
-    <div class="panel-heading">
-        <p>{{ product.name }} Details:</p>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-center">
-                {% if product.image %}
-                <img class="product-detail-img" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
-                {% else %}
-                <img src="{% static 'media/images/default-product.svg' %}" alt="default">
-                {% endif %}
-                <button class="btn btn-success">Add to Cart</button>
-                <a href="{% url 'products' %}" type="button" class="btn btn-primary" role="button">Back</a>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel-wrapper panel panel-primary ml-2 mt-5">
+            <div class="panel-heading">
+                <p>{{ product.name }} Details:</p>
             </div>
-            <div class="col-xs-12 col-sm-9 col-md-5 col-lg-5">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr colspan=2>
-                            <th>#</th>
-                            <th>Product details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">
-                                <p>Product Name :</p>
-                            </th>
-                            <td>
-                                <p>{{ product.name }}</p>
-                                <p>{{ product.vendor }}</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                {%if product.offer > 0 %}
-                                <p>Current Offer :</p>
-                                {% else %}
-                                <p>Price :</p>
-                                {%endif%}
-                            </th>
-                            <td>
-                                {%if product.offer > 0 %}
-                                <p>previous price : <strike>{{ product.price }} &euro;</strike> </p>
-                                <p>discount : {{ product.offer }}%</p>
-                                <p>now only <u class="text-danger">{{ product.discount }} &euro;</u></p>
-                                {% else %}
-                                <p>{{ product.price }} &euro;</p>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <p>Stock :</p>
-                            </th>
-                            <td>
-                                {% if product.stock > 10 %}
-                                <p class="text-success">Available</p>
-                                {%elif product.stock < 1 %}
-                                <p class="text-danger">No avalaibility at the moment</p>
-                                {%elif product.stock > 1 and product.stock < 10 %}
-                                <p class="text-warning"><u>Only {{ product.stock }} left in stock</u></p>
-                                {% endif %}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr>
-                            <th>Description :</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                {% if product.description %}
-                                {{ product.description|linebreaks }}
-                                {% else %}
-                                No description provided for this item yet
-                                {% endif %}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-9 col-sm-offset-3">
-                <p>stars</p>
-                <p>product feedbacks</p>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-center">
+                        {% if product.image %}
+                        <img class="product-detail-img" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
+                        {% else %}
+                        <img class="product-detail-img" src="{% static 'media/images/default-product.svg' %}"
+                            alt="default">
+                        {% endif %}
+                        <button class="btn btn-success">Add to Cart</button>
+                        <a href="{% url 'products' %}" type="button" class="btn btn-primary" role="button">Back</a>
+                    </div>
+                    <div class="col-xs-12 col-sm-9 col-md-5 col-lg-5">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr colspan=2>
+                                    <th>#</th>
+                                    <th>Product details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Product Name :</p>
+                                    </th>
+                                    <td>
+                                        <p>{{ product.name }}</p>
+                                        <p>{{ product.vendor }}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        {%if product.offer > 0 %}
+                                        <p>Current Offer :</p>
+                                        {% else %}
+                                        <p>Price :</p>
+                                        {%endif%}
+                                    </th>
+                                    <td>
+                                        {%if product.offer > 0 %}
+                                        <p>previous price : <strike>{{ product.price }} &euro;</strike> </p>
+                                        <p>discount : {{ product.offer }}%</p>
+                                        <p>now only <u class="text-danger">{{ product.discount }} &euro;</u></p>
+                                        {% else %}
+                                        <p>{{ product.price }} &euro;</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Stock :</p>
+                                    </th>
+                                    <td>
+                                        {% if product.stock > 10 %}
+                                        <p class="text-success">Available</p>
+                                        {%elif product.stock < 1 %}
+                                        <p class="text-danger">No avalaibility at the moment</p>
+                                        {%elif product.stock > 1 and product.stock < 10 %}
+                                        <p class="text-warning"><u>Only {{ product.stock }} left in stock</u></p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Description :</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {% if product.description %}
+                                        {{ product.description|linebreaks }}
+                                        {% else %}
+                                        No description provided for this item yet
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-9 col-sm-offset-3">
+                        <p>stars</p>
+                        <p>product feedbacks</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 {% endblock %}

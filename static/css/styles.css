@@ -118,7 +118,7 @@ body {
     background-color: #f8f9fa;
 }
 .bg-through {
-    background-color: rgba(255,255,255,0.95);
+    background-color: rgba(255,255,255,0.7);
 }
 
 .row {
@@ -160,7 +160,6 @@ input[type=number] {
 }
 
 /* carousel */
-
 .carousel-background {
     position: absolute;
     top: 0;
@@ -232,7 +231,6 @@ input[type=number] {
 }
 
 .panel-wrapper {
-    margin-top: 5rem;
     margin-bottom: 1rem;
 }
 
@@ -259,7 +257,7 @@ input[type=number] {
 
 .custom-thumbnail {
     text-align: center;
-    min-height: 440px;
+    min-height: 465px;
     width: 250px;
 }
 
@@ -288,10 +286,16 @@ input[type=number] {
 }
 
 .preview {
-    height: 470px;
+    height: 490px;
     overflow-y: auto;
     border: 1px solid #cccccc;
     border-radius: 4px;
+}
+
+.add-product-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 input[name=new_password1], 
