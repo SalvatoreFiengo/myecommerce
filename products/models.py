@@ -13,12 +13,12 @@ class Product(models.Model):
     HALF = 50
     TQUARTER = 75
     OFFER_CHOICES = (
-        (DEFAULT, "0"),
-        (FIFTH, "5%"),
-        (TENTH, "10%"),
-        (QUARTER, "25%"),
-        (HALF, "50%"),
-        (TQUARTER, "75%"),
+        (DEFAULT, 0),
+        (FIFTH, 5),
+        (TENTH, 10),
+        (QUARTER, 25),
+        (HALF, 50),
+        (TQUARTER, 75),
     )
     EL_CO = "Electronic & Computers"
     MO_TV_MS_GA = "Movies, TV, Music & Games"

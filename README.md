@@ -32,3 +32,13 @@ Media:
 - add a product: 
 <a href="https://www.freepik.com/free-photos-vectors/background">Background photo created by rawpixel.com - www.freepik.com</a>
 favicon image,(Shop icon)[https://icons8.com/icons/set/shop--v4]  from: (Icons8)[https://icons8.com]
+Bugs issues:
+    - due to old migrations got error invalid literal for int() with base 10: 'Select' when migrating to postgresql in heroku:
+    - launched 
+    find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+    find . -path "*/migrations/*.pyc"  -delete
+    then had to reinstall django --> fixed
+
+    - access denied by s3boto3 to static files in media folder
+    - Django is suspicious of relative path starting with "/"
+    - dashes removed

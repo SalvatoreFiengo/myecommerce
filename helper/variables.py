@@ -1,7 +1,7 @@
 background = {
-    "main":"/media/images/background.jpg",
-    "Electronic & Computers":"/media/images/technology-background.jpg",
-    "default":"/media/images/white-background.jpg"
+    "main":"media/images/background.jpg",
+    "Electronic & Computers":"media/images/technology-background.jpg",
+    "default":"media/images/white-background.jpg"
 }
 categories = {
     "EL_CO" : "Electronic & Computers",

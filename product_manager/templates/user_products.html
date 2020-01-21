@@ -172,6 +172,10 @@
                                             <td> None </td>
                                             {% endif %}
                                         </tr>
+                                        {% empty %}
+                                        <tr>
+                                            <td>No Products added yet</td>
+                                        </tr>
                                         {% endfor %}
                                     </tbody>   
                                 </table>
