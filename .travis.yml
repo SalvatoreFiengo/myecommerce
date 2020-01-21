@@ -5,9 +5,6 @@ jobs:
       dist: xenial
 install: 
   - "pip install -r requirements.txt"
-  - "pip install Pillow"
-  - "pip install django-forms-bootstrap"
-  - "pip install django-static-fontawesome"
 env:
   - DJANGO=1.11.24
 before_script:
