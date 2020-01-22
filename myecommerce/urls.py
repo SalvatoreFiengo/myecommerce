@@ -19,8 +19,8 @@ from accounts import urls as url_accounts
 from products import urls as url_products
 from accounts.views import index
 from search import urls as url_search
-from product_manager import urls as url_product_manager
 from cart import urls as url_cart
+from checkout import urls as url_checkout
 from django.views import static
 from .settings import MEDIA_ROOT
 
@@ -29,8 +29,8 @@ urlpatterns = [
     url(r'^$', index, name="index"),
     url(r'^accounts/', include(url_accounts)),
     url(r'^products/', include(url_products), name="products"),
-    url(r'^', include(url_product_manager)),
     url(r'^search/', include(url_search)),
     url(r'^cart/', include(url_cart)),
+    url(r'^checkout/', include(url_checkout)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT})
 ]

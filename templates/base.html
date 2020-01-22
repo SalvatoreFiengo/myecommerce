@@ -7,15 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My E-commerce {% block title %} {% endblock %}</title>
-    <link rel="icon" 
-      type="image/png" 
-      href="{% static 'media/images/favicon.ico'%}">
+    <link rel="icon" type="image/png" href="{% static 'media/images/favicon.ico'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% block checkout_js %}
+    {% endblock checkout_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
 </head>
 
 <body>
+    {% if messages %}
+    <div id="messages-modal" class="opened modal show" tabindex="-1" role="dialog" data-backdrop="static"
+        data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                {% for message in messages %}
+                <div
+                    class="modal-header {%if message.level == 25%}bg-success {% elif message.level == 30%} bg-warning {% else %} bg-danger{% endif %}">
+                    <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{message.extra_tags}}</h4>
+                </div>
+                <div class="modal-body">
+                    <p>{{message}}</p>
+                </div>
+                {% endfor %}
+                <div class="modal-footer">
+                    <button id="close-messages-modal" type="button" class="btn btn-default close-modal"
+                        data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    {% endif %}
     <header>
         <div class="row">
             <nav class="navbar navbar-default mb-0">
@@ -35,6 +63,11 @@
                             <li class="mr-2">
                                 <a href="{% url 'index' %}"><i class="fas fa-home"></i>Home</a>
                             </li>
+                            {% if user.userprofile.reseller %}
+                            <li class="mr-2">
+                                <a href="{% url 'user_products' %}"><i class="fas fa-store"></i>Your Products</a>
+                            </li>
+                            {% endif %}
                             {% if user.is_authenticated %}
                             <li class="mr-2">
                                 <a href="{% url 'profile'%}"><i class="fas fa-user"></i>Profile</a>
@@ -109,8 +142,4 @@
         }
     </style>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="{% static 'js/main.js' %}"></script>
-
 </html>

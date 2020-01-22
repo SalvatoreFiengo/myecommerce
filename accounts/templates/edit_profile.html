@@ -59,7 +59,15 @@
                                 <th>
                                     <p>Are you a vendor as well?</p>
                                 </th>
-                                <td><label for="id_reseller">click</label>{{ profile_form.reseller }}</td>
+                                <td>
+                                    <label for="id_reseller">
+                                        <a type="button" id="is_vendor" class="btn btn-sm btn-primary">
+                                            {% if user.userprofile.reseller %}Yes{% else %}No{% endif %}
+                                        </a>
+                                    </label>
+                                    {{ profile_form.reseller }}
+                                    
+                                </td>
                             </tr>
                         </tbody>
                     </table>

@@ -56,4 +56,12 @@ $(document).ready(function(){
         console.log('clicked')
         $('#add-product-via-img').submit()
     })
+    //Edit Profile is vendor checkbox behaviour
+    $("#id_reseller").on('change', function(){
+        if(this.checked){
+            $('#is_vendor').text('No')
+        }else(
+            $('#is_vendor').text('Yes')
+        )
+    })
 })

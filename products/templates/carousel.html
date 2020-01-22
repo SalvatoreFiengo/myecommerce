@@ -18,25 +18,29 @@
         {% for product in carousel_items %}
         <div class="item {% if forloop.counter == 1 %} active {% endif %}">
             {% if product.image %}
-            <img class="carousel-background" src="{% static background|with_name:product.category %}"
-                alt="background image">
-            <figure class="figure">
-                <div class="product-img-vertical-fix"></div>
-                <img class="carousel-img-size figure-img" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
-                <figcaption class="figure-caption">
-                    <p>{{ product.name }}</p>
-                </figcaption>
-            </figure>
+            <a href="{% url 'product_details' product.id%}">
+                <img class="carousel-background" src="{% static background|with_name:product.category %}"
+                    alt="background image">
+                <figure class="figure">
+                    <div class="product-img-vertical-fix"></div>
+                    <img class="carousel-img-size figure-img" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
+                    <figcaption class="figure-caption">
+                        <p>{{ product.name }}</p>
+                    </figcaption>
+                </figure>
+            </a>
             {% else %}
-            <img class="carousel-background" src="{% static background|with_name:product.category %}"
-                alt="background image">
-            <figure class="figure">
-                <div class="product-img-vertical-fix"></div>
-                <img class="carousel-img-size figure-img" src="{% static '/media/images/default-product.svg' %}" alt="default">
-                <figcaption class="figure-caption">
-                    <p>{{ product.name }}</p>
-                </figcaption>
-            </figure>
+            <a href="{% url 'product_details' product.id%}">
+                <img class="carousel-background" src="{% static background|with_name:product.category %}"
+                    alt="background image">
+                <figure class="figure">
+                    <div class="product-img-vertical-fix"></div>
+                    <img class="carousel-img-size figure-img" src="{% static '/media/images/default-product.svg' %}" alt="default">
+                    <figcaption class="figure-caption">
+                        <p>{{ product.name }}</p>
+                    </figcaption>
+                </figure>
+            </a>
             {% endif %}
             <div class="carousel-caption">
                 <div class="carousel-caption-wrapper">
