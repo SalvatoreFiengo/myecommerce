@@ -87,10 +87,11 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="mr-2">
                                 <a class="text-center" href="{% url 'view_cart' %}">
-                                    <i class="fas fa-shopping-cart"></i><p>Your Cart</p>
+                                    <i class="fas fa-shopping-cart"></i>
                                     {% if product_count > 0 %}
                                     <label class="badge badge-warning">{{ product_count }}</label>
                                     {% endif %}
+                                    <p>Your Cart</p>
                                 </a>
                             </li>
                         </ul>
