@@ -7,6 +7,7 @@ An E-commerce website in developying using
  - HTML
  - CSS
  - Bootstrap 3
+Mocks can be found in project-mocks folder as PNG files
 More info will be posted
 
 [![Build Status](https://travis-ci.com/SalvatoreFiengo/myecommerce.svg?branch=master)](https://travis-ci.com/SalvatoreFiengo/myecommerce)
