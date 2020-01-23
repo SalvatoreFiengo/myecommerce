@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["my-django-ecommerce.herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1","my-django-ecommerce.herokuapp.com"]
 
 
 # Application definition

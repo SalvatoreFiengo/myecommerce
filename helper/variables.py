@@ -1,6 +1,9 @@
 background = {
     "main":"media/images/background.jpg",
     "Electronic & Computers":"media/images/technology-background.jpg",
+    "Health & Beauty":"media/images/beauty-background.jpg",
+    "Movies, TV, Music & Games":"mo-mu-ga-background.jpg",
+    "Toys, Children & Baby":"to-chi-ba-background.jpg",
     "default":"media/images/white-background.jpg"
 }
 categories = {
