@@ -50,44 +50,44 @@
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed mt-0 ml-1 mr-1" data-toggle="collapse"
+                        <button type="button" class="navbar-toggle collapsed mt-1 ml-1 mr-1" data-toggle="collapse"
                             data-target="#bs-primary-navbar-collapse" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="text-white glyphicon glyphicon-menu-hamburger"></span>
                         </button>
-                        <a class="navbar-brand media-page-header mr-3" href="{% url 'index'%}">My
+                        <a class="navbar-brand media-page-header mt-1 mr-3" href="{% url 'index'%}">My
                             E-Commerce</a>
                     </div>
                     <div id="bs-primary-navbar-collapse" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li class="mr-2">
-                                <a href="{% url 'index' %}"><i class="fas fa-home"></i>Home</a>
+                                <a class="text-center" href="{% url 'index' %}"><i class="fas fa-home"></i><p>Home</p></a>
                             </li>
                             {% if user.userprofile.reseller %}
                             <li class="mr-2">
-                                <a href="{% url 'user_products' %}"><i class="fas fa-store"></i>Your Products</a>
+                                <a class="text-center" href="{% url 'user_products' %}"><i class="fas fa-store"></i><p>Your Products</p></a>
                             </li>
                             {% endif %}
                             {% if user.is_authenticated %}
                             <li class="mr-2">
-                                <a href="{% url 'profile'%}"><i class="fas fa-user"></i>Profile</a>
+                                <a class="text-center" href="{% url 'profile'%}"><i class="fas fa-user"></i><p>Your Profile</p></a>
                             </li>
                             <li class="mr-2">
-                                <a href="{% url 'logout'%}"><i class="fas fa-sign-out-alt"></i>LogOut</a>
+                                <a class="text-center" href="{% url 'logout'%}"><i class="fas fa-sign-out-alt"></i><p>LogOut</p></a>
                             </li>
                             {% else %}
                             <li class="mr-2">
-                                <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i>SignIn</a>
+                                <a class="text-center" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i><p>SignIn</p></a>
                             </li>
                             <li class="mr-2">
-                                <a href="{% url 'registration' %}"><i class="fas fa-user-plus"></i>SignUp</a>
+                                <a class="text-center" href="{% url 'registration' %}"><i class="fas fa-user-plus"></i><p>SignUp</p></a>
                             </li>
                             {% endif %}
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="{% url 'view_cart' %}">
-                                    <i class="fas fa-shopping-cart"></i>Cart
+                            <li class="mr-2">
+                                <a class="text-center" href="{% url 'view_cart' %}">
+                                    <i class="fas fa-shopping-cart"></i><p>Your Cart</p>
                                     {% if product_count > 0 %}
                                     <label class="badge badge-warning">{{ product_count }}</label>
                                     {% endif %}

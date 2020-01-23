@@ -168,7 +168,7 @@
                                         {% for product in products %}
                                         <tr>
                                             <td>{{product.name}}</td>
-                                            <td>{{product.price}} &euro;</td>
+                                            <td>{{product.price}}&euro;</td>
                                             {% if product.offer > 0 %}
                                             <td>{{product.offer|cut:".00"}}%</td>
                                             {% else %}
@@ -213,8 +213,9 @@
                         </div>
                     </div>
                     <div id="user-products" class="col-xs-12 col-sm-12 col-md-8">
-                        <div id="preview-wrapper ml-1">
-                            <h3>Preview :</h3>
+                        <h3>Preview :</h3>
+                        <div id="preview-wrapper" class="flex-wrapper-justified-center">
+                            
                             <ul class="custom-media-list-products list-inline preview p-0">
                                 {% for product in products %}
                                 <li>
