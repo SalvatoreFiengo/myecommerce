@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.template.defaulttags import register
 from django.shortcuts import get_object_or_404
+from django.contrib import messages
 from helper.functions import get_products_for_carousel
 from helper.variables import background, categories
 from .models import Product
@@ -22,6 +23,9 @@ def all_products(request):
             products = Product.objects.all()
         else:
             products = Product.objects.filter(category=category)
+            if not products:
+                messages.error(request, "No products found for category: '"+category+"'", extra_tags="Filter Result")
+                return redirect(reverse('products'))
             if category in background.keys():
                 selected_background = background[category]
             else:

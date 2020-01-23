@@ -30,8 +30,10 @@ Media:
     - lotion:
         [Background photo created by freepik - www.freepik.com](https://www.freepik.com/free-photos-vectors/background)
     -   background <a href="https://www.freepik.com/free-photos-vectors/background">Background photo created by freepik - www.freepik.com</a>
-- Music Movies and Toys
+- Music Movies and Games
     - <a href="https://www.freepik.com/free-photos-vectors/background">Background photo created by freepik - www.freepik.com</a>
+- Toys children
+    - <a href="https://www.freepik.com/free-photos-vectors/children">Children photo created by freepik - www.freepik.com</a>
 - add a product: 
 <a href="https://www.freepik.com/free-photos-vectors/background">Background photo created by rawpixel.com - www.freepik.com</a>
 favicon image,(Shop icon)[https://icons8.com/icons/set/shop--v4]  from: (Icons8)[https://icons8.com]
