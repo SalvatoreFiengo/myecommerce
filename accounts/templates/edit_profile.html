@@ -61,8 +61,8 @@
                                 </th>
                                 <td>
                                     <label for="id_reseller">
-                                        <a type="button" id="is_vendor" class="btn btn-sm btn-primary">
-                                            {% if user.userprofile.reseller %}Yes{% else %}No{% endif %}
+                                        <a type="button" id="is_vendor" class="btn btn-sm {% if user.userprofile.reseller %}btn-danger{% else %}btn-success{% endif %}">
+                                            {% if user.userprofile.reseller %}No{% else %}Yes{% endif %}
                                         </a>
                                     </label>
                                     {{ profile_form.reseller }}

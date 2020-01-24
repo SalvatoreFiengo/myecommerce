@@ -42,7 +42,10 @@
                                     <p>My E-commerce</p>
                                     {% endif %}
                                 <hr>
-                                <form action="{% url 'add_to_cart' product.id %}">
+                                <form action="{% url 'add_to_cart' product.id %}" method="POST">
+                                    <div style="display:none">
+                                        <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+                                    </div>
                                     <div class="input-group">
                                         <input name="quantity" type="number" min="0" max="{{product.stock}}"
                                             class="form-control" placeholder="Quantity">

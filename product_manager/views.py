@@ -22,6 +22,7 @@ def add_or_edit_a_product(request, pk=None):
     all_products = Product.objects.filter(vendor=request.user.id).order_by('-offer')
     selected_product = get_object_or_404(Product, pk=pk) if pk else None
     edit = True if pk else False
+    modal = True
     if request.method == "POST":
         if pk:
             user_product_form = AddProductForm(request.POST or None, request.FILES or None, instance=selected_product)

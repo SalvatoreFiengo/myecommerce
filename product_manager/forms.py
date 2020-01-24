@@ -11,13 +11,13 @@ class AddProductForm(forms.ModelForm):
         fields = ("name", "category", "image","price", "offer", "description", "stock", "id")
 
     def clean_price(self):
-        """password validation method"""
+        """price validation method throws an error if price is 0"""
         price = self.cleaned_data.get('price')
         if price == "0":
             raise forms.ValidationError(u'Please insert a price for your product')
         return price
     def clean_stock(self):
-        """password validation method"""
+        """stock validation method throws an error if stock is 0"""
         stock = self.cleaned_data.get('stock')
         if stock == 0:
             raise forms.ValidationError(u'Please insert product quantity')

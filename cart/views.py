@@ -23,6 +23,7 @@ def add_to_cart(request, id):
         pass
     elif id in cart:
         cart[id] = int(cart[id]) + quantity
+        request.session['cart'] = cart
     else:
         cart[id] = cart.get(id, quantity)
         request.session['cart'] = cart
