@@ -22,3 +22,7 @@ class AddProductForm(forms.ModelForm):
         if stock == 0:
             raise forms.ValidationError(u'Please insert product quantity')
         return stock
+    def clean_image(self):
+        image = self.cleaned_data.get('image')
+        if image and image._size > 5242880:
+            raise forms.ValidationError(u'This image is too big, limit 500kb')

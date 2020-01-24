@@ -57,6 +57,10 @@
                                                 </div>
                                                 <p class="image-input-fake">{{user_product_form.image}}</p>
                                             </div>
+                                            {% if user_product_form.image.errors %}
+                                            <p class="alert alert-danger m-0">
+                                                {{user_product_form.image.errors.as_text|cut:"* "}}</p>
+                                            {% endif %}
                                         </td>
                                     </tr>
                                     <tr>
