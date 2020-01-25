@@ -47,6 +47,10 @@ def checkout(request):
                 if customer.paid:
                     messages.success(
                         request, "You have successfully paid", extra_tags="Transaction Successful")
+                    for id, quantity in cart.items():
+                        product = get_object_or_404(Product, pk=id)
+                        product.stock -= quantity
+                        product.save() 
                     request.session['cart'] = {}
                     return redirect(reverse('products'))
                 else:

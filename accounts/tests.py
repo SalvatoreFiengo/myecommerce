@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
+from .models import Userprofile
 from .views import login
 
 
@@ -16,7 +17,7 @@ class TestAccountsView(TestCase):
                              target_status_code=200,
                              fetch_redirect_response=True)
 
-    def test_login(self):
+    def test_login_loads_correctly(self):
         """test login with redirect to products page and success message displayed"""
         page = self.client.get('/', follow=True)
         self.user = User.objects.create_user(
@@ -33,7 +34,7 @@ class TestAccountsView(TestCase):
                              target_status_code=200,
                              fetch_redirect_response=True)
 
-    def test_login_unsucessful(self):
+    def test_login_unsuccessful(self):
         """test login function redirects if login not successful"""
         page = self.client.get('/', follow=True)
         self.user = User.objects.create_user(
@@ -61,7 +62,7 @@ class TestAccountsView(TestCase):
                              target_status_code=200,
                              fetch_redirect_response=True)
 
-    def test_logout(self):
+    def test_logout_correctly_logs_user_out(self):
         """testing logout with success message and redirect to main page"""
         page = self.client.get('/', follow=True)
         self.user = User.objects.create_user(
@@ -108,8 +109,23 @@ class TestAccountsView(TestCase):
         self.assertTrue(
             str(message), "Unable to register your account at this time")
 
+class TestUserProfileModel(TestCase):
+    
+    def test_create_user_with_profile(self):
+        self.user = User.objects.create_user(
+            username='test', password='testpassword') 
+        self.assertTrue(hasattr(self.user.userprofile, 'bio'), True) 
+        self.assertTrue(hasattr(self.user.userprofile, 'birth_date'), True)
+        self.assertTrue(hasattr(self.user.userprofile, 'reseller'), True) 
+        self.assertTrue(hasattr(self.user.userprofile, 'phone_number'), True)
+        self.assertTrue(hasattr(self.user.userprofile, 'country'), True)
+        self.assertTrue(hasattr(self.user.userprofile, 'post_code'), True)  
+        self.assertTrue(hasattr(self.user.userprofile, 'town_or_city'), True)
+        self.assertTrue(hasattr(self.user.userprofile, 'street_address1'), True)
+        self.assertTrue(hasattr(self.user.userprofile, 'street_address2'), True) 
+        self.assertTrue(hasattr(self.user.userprofile, 'county'), True)       
 
-class TestProfile(TestCase):
+class TestProfilePage(TestCase):
 
     def test_profile_page(self):
         """testing profile page and if user model gets a profile as per extended model"""
@@ -120,27 +136,16 @@ class TestProfile(TestCase):
 
         self.assertTemplateUsed('profile.html')
         self.assertTrue(hasattr(self.user, 'userprofile'), True)
-        self.assertTrue(hasattr(self.user.userprofile, 'location'), True)
-
-    def test_edit_profile_page(self):
-        """testing edit profile  """
-        self.user = User.objects.create_user(
-            username='test', password='testpassword')
-        self.client.login(username='test', password='testpassword')
-        page = self.client.get('/edit_profile/')
-
-        self.assertTemplateUsed('edit_profile.html')
-        self.assertTrue(hasattr(self.user, 'userprofile'), True)
-        self.assertTrue(hasattr(self.user.userprofile, 'location'), True)
+        self.assertTrue(hasattr(self.user.userprofile, 'phone_number'), True)
 
     def test_update_profile_page(self):
-        """testing edit profile  """
+        """testing edit profile """
         self.user = User.objects.create_user(
             username='test', password='testpassword')
         self.client.login(username='test', password='testpassword')
         request = self.client.post('/update_profile/', {
-                                'first_name': 'testname', 'last_name': 'testsurname', 'email': 'test@test.com', 'location': 'ireland'})
+                                'first_name': 'testname', 'last_name': 'testsurname', 'email': 'test@test.com', 'phone_number': '083525658'})
         self.assertTemplateUsed('update_profile.html')
         self.assertTrue(hasattr(self.user, 'userprofile'), True)
-        self.assertTrue(hasattr(self.user.userprofile, 'location'), True)
-        # self.assertEqual(request.location, 'ireland')
+        self.assertTrue(hasattr(self.user.userprofile, 'phone_number'), True)
+        self.assertTrue('083525658',self.user.userprofile.phone_number)
