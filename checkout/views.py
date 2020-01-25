@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import MakePaymentForm, OrderForm
-from .models import OrderLineItem
 from django.conf import settings
 from django.utils import timezone
+from .forms import MakePaymentForm, OrderForm
+from .models import OrderLineItem
 from products.models import Product
 from helper.variables import background
 import stripe
@@ -13,7 +13,6 @@ import stripe
 # Create your views here.
 
 stripe.api_key = settings.STRIPE_SECRET
-
 
 @login_required()
 def checkout(request):
@@ -59,14 +58,14 @@ def checkout(request):
                 pass
             except stripe.error.RateLimitError as e:
                 # Too many requests made to the API too quickly
-                error_message = "Error :"+e.json_body["error"]
-                messages.error(request, error_message,
+                error_message = e.json_body["error"]
+                messages.error(request, f"{error_message.get('message')}",
                                extra_tags="Too many attempts")
                 pass
             except stripe.error.InvalidRequestError as e:
                 # Invalid parameters were supplied to Stripe's API
-                error_message = "Error :"+e.json_body["error"]
-                messages.error(request, error_message,
+                error_message = e.json_body["error"]
+                messages.error(request, f"{error_message.get('message')}",
                                extra_tags="Invalid Request Error")
                 pass
             except stripe.error.AuthenticationError as e:
@@ -79,29 +78,37 @@ def checkout(request):
                 pass
             except stripe.error.APIConnectionError as e:
                 # Network communication with Stripe failed
-                error_message = "Error :"+e.json_body["error"]
-                messages.error(request, error_message,
+                error_message = e.json_body["error"]
+                messages.error(request, f"{error_message.get('message')}",
                                extra_tags="Network Error")
                 pass
             except stripe.error.StripeError as e:
                 # Display a very generic error to the user, and maybe send
                 # yourself an email
-                error_message = "Error :"+e.json_body["error"]
-                messages.error(request, error_message,
+                error_message = e.json_body["error"]
+                messages.error(request, f"{error_message.get('message')}",
                                extra_tags="Generic Error")
                 pass
             except Exception as e:
                 # any other error
-                error_message = "Your card was declined, error :"+e.json_body["error"]
-                messages.error(request, error_message,
+                error_message =e.json_body["error"]
+                messages.error(request, f"{error_message.get('message')}",
                                extra_tags="Card Not Accepted")
                 pass
 
         else:
-            print(payment_form.errors)
             messages.error(
                 request, "Please check Card number and try again", extra_tags="Card Not Accepted")
     else:
+        user_data = {'full_name': request.user.first_name+" "+request.user.last_name,
+                     'phone_number': request.user.userprofile.phone_number,
+                     'country': request.user.userprofile.country,
+                     'post_code': request.user.userprofile.post_code,
+                     'town_or_city': request.user.userprofile.town_or_city,
+                     'street_address1': request.user.userprofile.street_address1,
+                     'street_address2': request.user.userprofile.street_address2,
+                     'county': request.user.userprofile.county
+                     }
         payment_form = MakePaymentForm()
-        order_form = OrderForm()
+        order_form = OrderForm(initial=user_data)
     return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE, "background_image": background["default"]})

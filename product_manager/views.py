@@ -45,6 +45,7 @@ def add_or_edit_a_product(request, pk=None):
         "edit": edit
         })
 def delete_product(request, pk):
+    """view that allows user to delete his/her own products"""
     product = get_object_or_404(Product, pk=pk)
 
     if request.method == "POST":

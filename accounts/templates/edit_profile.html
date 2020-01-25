@@ -49,10 +49,10 @@
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    <p>Location</p>
+                                    <p>Phone Number</p>
                                 </th>
                                 <td>
-                                    <p>{{ profile_form.location }}</p>
+                                    <p>{{ profile_form.phone_number }}</p>
                                 </td>
                             </tr>
                             <tr>
@@ -67,6 +67,49 @@
                                     </label>
                                     {{ profile_form.reseller }}
                                     
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <p>Street address</p>
+                                    <p>#</p>
+                                </th>
+                                <td>
+                                    <p>{{ profile_form.street_address1 }}</p>
+                                    <p>{{ profile_form.street_address2 }}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <p>Country</p>
+                                </th>
+                                <td>
+                                    {{ profile_form.country }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <p>Post code</p>
+                                </th>
+                                <td>
+                                    <p>{{ profile_form.post_code }}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <p>City / Town</p>
+                                </th>
+                                <td>
+                                    {{ profile_form.town_or_city }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">
+                                    <p>County</p>
+                                </th>
+                                <td>
+                                    {{ profile_form.county }}
                                 </td>
                             </tr>
                         </tbody>

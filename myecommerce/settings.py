@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import sys
-
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -28,7 +27,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1","my-django-ecommerce.herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "my-django-ecommerce.herokuapp.com"]
 
 
 # Application definition
@@ -94,7 +93,7 @@ if 'test' in sys.argv:
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
-    }  
+    }
 elif "DATABASE_URL" in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
@@ -176,7 +175,8 @@ MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 STRIPE_PUBLISHABLE = os.getenv("STRIPE_PUBLISHABLE")
 STRIPE_SECRET = os.getenv("STRIPE_SECRET")
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_USE_TLS = True
 
@@ -186,4 +186,6 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 
-EMAIL_PORT = 597
+EMAIL_PORT = 587
+
+DEFAULT_FROM_EMAIL = 'noreply@myecommerce.com'

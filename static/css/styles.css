@@ -139,8 +139,8 @@ body {
 }
 
 header {
-    height: 85px;
-    max-height: 85px;
+    height: 82px;
+    max-height: 82px;
 }
 
 .alert {
@@ -312,7 +312,24 @@ input[type=number] {
     background-size: cover;
 }
 
-input[name=new_password1], input[name=new_password2], input[name=first_name], input[name=last_name], input[name=location], input[name=name], input[name=price], input[name=stock], select[name=offer], select[name=category], p.image-input-fake {
+input[name=new_password1], 
+input[name=new_password2], 
+input[name=email], 
+input[name=first_name], 
+input[name=last_name], 
+input[name=phone_number],
+input[name=street_address1],
+input[name=street_address2],
+input[name=country], 
+input[name=post_code], 
+input[name=town_or_city],
+input[name=county],
+input[name=name], 
+input[name=price], 
+input[name=stock], 
+select[name=offer], 
+select[name=category], 
+p.image-input-fake {
     display: block;
     width: 100%;
     height: 38px;
@@ -345,9 +362,11 @@ input[name=image] {
     opacity: 0;
     width: 100%;
 }
-#id_reseller{
+
+#id_reseller {
     opacity: 0;
 }
+
 select[name=birth_date_day], select[name=birth_date_month], select[name=birth_date_year] {
     display: inline-block;
     height: 38px;
@@ -400,11 +419,14 @@ textarea[name=bio], #id_description {
 .input-group-addon {
     padding: 4px 8px;
 }
+
 .flex-wrapper-justified-center {
     display: flex;
     justify-content: center;
-} 
+}
+
 /* footer */
+
 .custom-footer {
     height: 75px;
     min-height: 75px;
@@ -493,15 +515,12 @@ nav .btn-sm {
     .custom-media-float-left {
         float: left;
     }
-
     .custom-media-float-right {
         float: right;
     }
-
     .input-group-addon {
         padding: 4px 8px;
     }
-
     .navbar-form .input-group>.form-control {
         width: auto;
     }
@@ -540,7 +559,6 @@ nav .btn-sm {
         display: flex;
         justify-content: flex-start;
     }
-
     .thumbnail {
         margin: 1rem;
     }

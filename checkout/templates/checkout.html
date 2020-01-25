@@ -27,6 +27,9 @@
                     </div>
                     <div class="form-group col-xs-12 col-md-6">
                         {{ order_form | as_bootstrap}}
+
+                        <p>Do you wish to save your data?</p> 
+                        <p>You can save it in your <a href="{% url 'profile'%}">profile</a> </p>
                     </div>
                     <div class="form-group col-xs-12 col-md-6">
                         <p class="alert alert-danger m-0" id="stripe-validation-error-message"></p>
@@ -37,6 +40,7 @@
                         <input type="submit" class="btn btn-primary" id="submit_payment_btn" name="commit" value="Submit Payment">
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

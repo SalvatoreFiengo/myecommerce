@@ -58,13 +58,13 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        <p>Location</p>
+                                        <p>Phone number</p>
                                     </th>
                                     <td>
-                                        {% if profile.location %}
-                                        <p>{{ profile.location }}</p>
+                                        {% if profile.phone_number %}
+                                        <p>{{ profile.phone_number }}</p>
                                         {% else %}
-                                        <p>Location not set</p>
+                                        <p>Phone number not set</p>
                                         {% endif %}
                                     </td>
                                 </tr>
@@ -81,6 +81,73 @@
                                         <p>Vendor Profile</p>
                                     </th>
                                     <td>{%if profile.reseller%}On{%else%}Off{%endif%}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Street address</p>
+                                        {% if profile.street_address2 %}
+                                            <p>#</p>
+                                        {% endif %}
+                                    </th>
+                                    <td>
+                                        {% if profile.street_address1 %}
+                                            <p>{{ profile.street_address1 }}</p>
+                                            {% if profile.street_address2 %}
+                                                <p>{{ profile.street_address2 }}</p>
+                                            {% endif %}
+                                        {% else %}
+                                            <p>Street address not set</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Country</p>
+                                    </th>
+                                    <td>
+                                        {% if profile.country %}
+                                        <p>{{ profile.country }}</p>
+                                        {% else %}
+                                        <p>Country not set</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>Post code</p>
+                                    </th>
+                                    <td>
+                                        {% if profile.post_code %}
+                                        <p>{{ profile.post_code }}</p>
+                                        {% else %}
+                                        <p>Post code not set</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p>City / Town</p>
+                                    </th>
+                                    <td>
+                                        {% if profile.town_or_city %}
+                                        <p>{{ profile.town_or_city }}</p>
+                                        {% else %}
+                                        <p>City / Town not set</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <p>County</p>
+                                    </th>
+                                    <td>
+                                        {% if profile.county %}
+                                        <p>{{ profile.county }}</p>
+                                        {% else %}
+                                        <p>County not set</p>
+                                        {% endif %}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
