@@ -51,7 +51,7 @@ $(document).ready(function(){
         input.val(inputValue);
         $("#adjust-cart-"+id).submit()
     })
-    // add a priduct in user prodducts
+    // add a product in user prodducts
     $('#add-product-image-link').on('click',function(){
         console.log('clicked')
         $('#add-product-via-img').submit()
@@ -59,9 +59,9 @@ $(document).ready(function(){
     //Edit Profile is vendor checkbox behaviour
     $("#id_reseller").on('change', function(){
         if(this.checked){
-            $('#is_vendor').text('No')
+            $('#is_vendor').text('No').removeClass('btn-success').addClass('btn-danger')
         }else(
-            $('#is_vendor').text('Yes')
+            $('#is_vendor').text('Yes').removeClass('btn-danger').addClass('btn-success')
         )
     })
 })

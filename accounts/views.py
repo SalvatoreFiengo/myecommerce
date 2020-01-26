@@ -80,7 +80,7 @@ def user_profile(request):
 
 @login_required
 def edit_profile(request):
-    """User can Edit Profile page"""
+    """redirect to Edit Profile page allowing user to edit its data"""
     user_form = UserForm(instance=request.user)
     profile_form = UserProfileForm(instance=request.user.userprofile)
     return render(request, 'edit_profile.html', {"user_form": user_form, "profile_form": profile_form, "background_image": background["default"]})
@@ -99,7 +99,8 @@ def update_profile(request):
                 request, ('Your profile was successfully updated!'), extra_tags="Profile Updated")
             return redirect(reverse('index'))
         else:
-            messages.error(request, ('Please correct the error below.'))
+            messages.error(request, ('Please correct the error below.'))   
+            return render(request, 'edit_profile.html', {"user_form": user_form, "profile_form": profile_form, "background_image": background["default"]})
     else:
         user_form = UserForm(instance=request.user)
         profile_form = UserProfileForm(instance=request.user.userprofile)

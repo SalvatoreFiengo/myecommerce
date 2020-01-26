@@ -112,6 +112,7 @@ class TestAccountsView(TestCase):
 class TestUserProfileModel(TestCase):
     
     def test_create_user_with_profile(self):
+        """test user adds userprofile as its extension correctly"""
         self.user = User.objects.create_user(
             username='test', password='testpassword') 
         self.assertTrue(hasattr(self.user.userprofile, 'bio'), True) 
@@ -133,12 +134,11 @@ class TestProfilePage(TestCase):
             username='test', password='testpassword')
         self.client.login(username='test', password='testpassword')
         page = self.client.get('/profile/')
-
         self.assertTemplateUsed('profile.html')
         self.assertTrue(hasattr(self.user, 'userprofile'), True)
         self.assertTrue(hasattr(self.user.userprofile, 'phone_number'), True)
 
-    def test_update_profile_page(self):
+    def test_update_profile_updates_correctly(self):
         """testing edit profile """
         self.user = User.objects.create_user(
             username='test', password='testpassword')

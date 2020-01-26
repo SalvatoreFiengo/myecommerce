@@ -20,16 +20,21 @@ class UserRegistrationForm(UserCreationForm):
                                 widget=forms.PasswordInput)
     password2 = forms.CharField(label="Password Confirmation",
                                 widget=forms.PasswordInput)
+
     class Meta:
         model = User
         fields = ['email', 'username', 'password1', 'password2']
+
     def clean_email(self):
         """email validation method"""
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
+        if not email:
+            raise forms.ValidationError(u'Please insert your email')
         if User.objects.filter(email=email).exclude(username=username):
             raise forms.ValidationError(u'Email address must be unique')
         return email
+
     def clean_password2(self):
         """password validation method"""
         password1 = self.cleaned_data.get('password1')
@@ -40,12 +45,19 @@ class UserRegistrationForm(UserCreationForm):
             raise forms.ValidationError(u'Password must match')
         return password2
 
+
 class UserForm(forms.ModelForm):
-    """Form to update User username in Profile"""
+    """Form to update User details"""
     class Meta:
         model = User
-        fields = ('first_name','last_name','email')
+        fields = ('first_name', 'last_name', 'email')
 
+    def clean_email(self):
+        """ensure email won't be empty"""
+        email = self.cleaned_data.get('email')
+        if not email:
+            raise forms.ValidationError(u'Please insert your email')
+        return email
 
 
 class UserProfileForm(forms.ModelForm):
@@ -54,8 +66,7 @@ class UserProfileForm(forms.ModelForm):
         widget=SelectDateWidget(years=previous_years(100))
     )
     reseller = BooleanField(required=False)
+
     class Meta:
         model = Userprofile
         fields = '__all__'
-        
-

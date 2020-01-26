@@ -26,6 +26,10 @@
 
                             <table class="table table-condensed table-bordered">
                                 <tbody>
+                                    {% if user_product_form.non_field_errors %}
+                                    <p class="alert alert-danger m-0">
+                                        {{ user_product_form.non_field_errors.as_text|cut:"* " }}</p>
+                                    {% endif %}
                                     <tr>
                                         <th scope="row">
                                             <p>Name :</p>
@@ -202,13 +206,15 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6 mb-1">
                                                 <form action="{% url 'add_product' %}">
-                                                    <button type="submit" class="btn btn-success custom-media-float-left"> Add a
+                                                    <button type="submit"
+                                                        class="btn btn-success custom-media-float-left"> Add a
                                                         product</button>
                                                 </form>
                                             </div>
                                             <div class="col-xs-12 col-sm-6 mb-1">
                                                 <a href="{% url 'products' %}" type="button"
-                                                    class="btn btn-primary custom-media-float-right" role="button">Back</a>
+                                                    class="btn btn-primary custom-media-float-right"
+                                                    role="button">Back</a>
                                             </div>
                                         </div>
                                     </div>
@@ -219,7 +225,7 @@
                     <div id="user-products" class="col-xs-12 col-sm-12 col-md-8">
                         <h3>Preview :</h3>
                         <div id="preview-wrapper" class="flex-wrapper-justified-center">
-                            
+
                             <ul class="custom-media-list-products list-inline preview p-0">
                                 {% for product in products %}
                                 <li>

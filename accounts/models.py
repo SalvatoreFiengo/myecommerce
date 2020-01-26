@@ -6,6 +6,7 @@ from django.dispatch import receiver
 
 
 class Userprofile(models.Model):
+    """Custom Profile extending User model"""
     user = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
     bio = models.TextField(max_length=500, blank=True, null=True)
     birth_date = models.DateField(null=True, blank=True)
@@ -21,18 +22,9 @@ class Userprofile(models.Model):
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
+    """Ensure userprofile is added ti basic user model after user is created"""
     if created:
         Userprofile.objects.create(user=instance)
         instance.userprofile.save()
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    try:
-        instance.userprofile.save()
-    except:
-        Userprofile.objects.create(user=instance)
-        try:
-           instance.userprofile.save() 
-        except: 
-            pass
 

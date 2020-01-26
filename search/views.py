@@ -5,7 +5,8 @@ from django.contrib import messages
 
 
 def do_search(request):
-
+    """search functionality based on string passed via GET form
+    custom message if nothing is found"""
     products = Product.objects.filter(name__icontains=request.GET['q'])
     if not products:
         messages.error(request, "No products found with name: '"+request.GET['q']+"'", extra_tags="Search Result")

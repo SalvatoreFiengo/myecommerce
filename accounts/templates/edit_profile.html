@@ -3,7 +3,6 @@
 {% block page_title %}: {{ user }}'s Profile {% endblock %}
 {% block page_header %} - {{ user }}'s Profile {% endblock %}
 {% block content %}
-
 <div class="panel-wrapper panel panel-info bg-through ml-2 mt-5">
     <div class="panel-heading">
         You can edit your Profile Details below
@@ -37,6 +36,18 @@
                                 </th>
                                 <td>
                                     <p>{{ user_form.last_name }}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <p>E-mail</p>
+                                </th>
+                                <td>
+                                    <p>{{ user_form.email}}</p>
+                                    {% if user_form.email.errors %}
+                                    <p class="alert alert-danger m-0">
+                                        {{ user_form.email.errors.as_text|cut:"* " }}</p>
+                                    {% endif %}
                                 </td>
                             </tr>
                             <tr>

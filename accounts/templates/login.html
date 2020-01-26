@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
 {% load bootstrap_tags %}
-
 {% block title %}: Login Page {% endblock %}
 {% block page_header %} - Login Page {% endblock %}
 {% block content %}
@@ -17,12 +15,12 @@
                 {% if messages %}
                 <div>
                     {% for message in messages %}
-                        {{message}}
+                    {{message}}
                     {% endfor %}
                 </div>
                 {% endif %}
                 {% if user.is_authenticated %}
-                    <p>you are already logged in</p>
+                <p>you are already logged in</p>
                 {% else %}
                 <form method="POST">
                     <div style="display:none">

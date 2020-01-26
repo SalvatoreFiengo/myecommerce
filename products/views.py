@@ -9,6 +9,7 @@ from .models import Product
 
 @register.filter(name='with_name')
 def with_name(value, arg):
+    """filter that provides correct background in carousel"""
     if arg in value:
         return value[arg]
     else:
@@ -16,6 +17,7 @@ def with_name(value, arg):
 
 
 def all_products(request):
+    """main page including filter behaviour"""
     selected_background = background["default"]
     if request.method == "POST":
         category = request.POST["filter-by-category"]
@@ -46,6 +48,7 @@ def all_products(request):
 
 
 def product_details(request, pk):
+    """product details with backgorund based on category"""
     product = Product.objects.get(pk=pk)
     if product.category in background.keys():
         selected_background = background[product.category]

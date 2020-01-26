@@ -6,6 +6,7 @@ from helper.variables import categories
 
 
 class Product(models.Model):
+    """define Product model"""
     DEFAULT = 0
     FIFTH = 5
     TENTH = 10
@@ -47,7 +48,7 @@ class Product(models.Model):
         return self.name
 
 @receiver(pre_save, sender=Product)
-def save_product_background(sender, instance, **kwargs):
+def save_product_discount(sender, instance, **kwargs):
     """after instance of Product model is saved, check if offer is greater of 0 
     if so assign a discount to the product """
 
