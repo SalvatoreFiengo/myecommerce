@@ -28,7 +28,7 @@
                     <div class="form-group col-xs-12 col-md-6">
                         {{ order_form | as_bootstrap}}
 
-                        <p>Do you wish to save your data?</p> 
+                        <p>Do you wish to save your data?</p>
                         <p>You can save it in your <a href="{% url 'profile'%}">profile</a> </p>
                     </div>
                     <div class="form-group col-xs-12 col-md-6">
@@ -37,7 +37,8 @@
                     </div>
                     {% csrf_token %}
                     <div class="form-group col-md-12">
-                        <input type="submit" class="btn btn-primary" id="submit_payment_btn" name="commit" value="Submit Payment">
+                        <input type="submit" class="btn btn-primary" id="submit_payment_btn" name="commit"
+                            value="Submit Payment">
                     </div>
                 </form>
 

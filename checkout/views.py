@@ -102,7 +102,7 @@ def checkout(request):
 
         else:
             messages.error(
-                request, "Please check Card number and try again", extra_tags="Card Not Accepted")
+                request, "Please review and amend any error in your paymetn form", extra_tags="Payment form")
     else:
         user_data = {'full_name': request.user.first_name+" "+request.user.last_name,
                      'phone_number': request.user.userprofile.phone_number,

@@ -11,7 +11,8 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-center">
                         {% if product.image %}
-                        <img class="product-detail-img mb-1" src="{{MEDIA_URL}}{{ product.image }}" alt="{{product.name}}">
+                        <img class="product-detail-img mb-1" src="{{MEDIA_URL}}{{ product.image }}"
+                            alt="{{product.name}}">
                         {% else %}
                         <img class="product-detail-img mb-1" src="{% static 'media/images/default-product.svg' %}"
                             alt="default">
@@ -32,7 +33,8 @@
                                 </form>
                             </div>
                             <div class="col-xs-3 col-md-3 mt-1 mb-1 p-0">
-                                <a href="{% url 'products' %}" type="button" class="btn btn-primary" role="button">Back</a>
+                                <a href="{% url 'products' %}" type="button" class="btn btn-primary"
+                                    role="button">Back</a>
                             </div>
                         </div>
                     </div>
@@ -115,6 +117,4 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}

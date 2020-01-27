@@ -13,6 +13,10 @@ class MakePaymentForm(forms.Form):
     stripe_id = forms.CharField(widget=forms.HiddenInput)
 
 class OrderForm(forms.ModelForm):
+    full_name = forms.CharField(error_messages={'required':'Full name is required'})
+    country = forms.CharField(error_messages={'required':'Please insert country'})
+    town_or_city = forms.CharField(error_messages={'required':'Please insert town or a city'})
+    street_address1 = forms.CharField(error_messages={'required':'Please insert street address'})
     class Meta:
         model = Order
         fields = (
