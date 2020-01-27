@@ -409,11 +409,20 @@ p.image-input-fake {
     margin-bottom: 0;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+    font-size: 0;
+}
+
+p.image-input-fake>a, 
+p.image-input-fake>#image-clear_id,
+p.image-input-fake>label, 
+p.image-input-fake>br{
+    display: none
 }
 
 input[name=image] {
     opacity: 0;
     width: 100%;
+    font-size: 12px!important;
 }
 
 #id_reseller {

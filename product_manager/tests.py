@@ -11,19 +11,19 @@ class TestUserProducts(TestCase):
         self.user = User.objects.create_user(
             username='test', password='testpassword')
         Product.objects.create(
-            name='testname', 
-            description='test description', 
-            offer=10, 
-            price=20, 
-            category="", 
-            stock=3, 
+            name='testname',
+            description='test description',
+            offer=10,
+            price=20,
+            category="",
+            stock=3,
             vendor=User.objects.get(username="test"))
         Product.objects.create(
-            name='testname2', 
-            description='test description', 
-            offer=10, 
-            price=20, 
-            category="", 
+            name='testname2',
+            description='test description',
+            offer=10,
+            price=20,
+            category="",
             stock=3)
 
     def test_get_vendor_products(self):
@@ -34,5 +34,3 @@ class TestUserProducts(TestCase):
         self.assertIn('testname', product_names)
         self.assertNotIn('testname2', product_names)
         self.assertTemplateUsed('user_products.html')
-    
-

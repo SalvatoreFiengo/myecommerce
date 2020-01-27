@@ -26,5 +26,3 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Userprofile.objects.create(user=instance)
         instance.userprofile.save()
-
-

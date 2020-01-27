@@ -26,7 +26,8 @@ def all_products(request):
         else:
             products = Product.objects.filter(category=category)
             if not products:
-                messages.error(request, "No products found for category: '"+category+"'", extra_tags="Filter Result")
+                messages.error(request, "No products found for category: '" +
+                               category+"'", extra_tags="Filter Result")
                 return redirect(reverse('products'))
             if category in background.keys():
                 selected_background = background[category]

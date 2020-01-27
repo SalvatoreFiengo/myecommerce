@@ -1,4 +1,3 @@
-"""importing necessary modules from django"""
 from django.conf.urls import url, include
 from accounts.views import logout, login, registration
 from accounts import url_reset

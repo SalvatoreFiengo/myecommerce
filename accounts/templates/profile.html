@@ -4,7 +4,7 @@
 {% block page_header %} - Profile Page {% endblock %}
 {% block content %}
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
         <div class="panel-wrapper panel panel-primary bg-through ml-2 mt-5">
             <div class="panel-heading">
                 <p>{{ user }}'s Profile Details:</p>
@@ -14,7 +14,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <table class="table table-condensed">
                             <thead>
-                                <tr colspan=2>
+                                <tr>
                                     <th>#</th>
                                     <th>Personal details</th>
                                 </tr>
@@ -175,9 +175,9 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <a href="{% url 'edit_profile' %}" type="button" class="btn btn-primary"> Edit Profile</a>
+                            <a href="{% url 'edit_profile' %}" class="btn btn-primary"> Edit Profile</a>
                         {% if profile.reseller %} 
-                            <a href="{% url 'user_products' %}" type="button" class="btn btn-secondary"> Your Products</a>
+                            <a href="{% url 'user_products' %}" class="btn btn-secondary"> Your Products</a>
                         {% endif %}
                     </div>
                 </div>

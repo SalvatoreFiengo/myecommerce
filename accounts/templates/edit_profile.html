@@ -16,7 +16,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <table class="table table-condensed">
                         <thead>
-                            <tr colspan=2>
+                            <tr>
                                 <th>#</th>
                                 <th>Personal details</th>
                             </tr>
@@ -71,10 +71,10 @@
                                     <p>Are you a vendor as well?</p>
                                 </th>
                                 <td>
-                                    <label for="id_reseller">
-                                        <a type="button" id="is_vendor" class="btn btn-sm {% if user.userprofile.reseller %}btn-danger{% else %}btn-success{% endif %}">
+                                    <label id="is_vendor" class="btn btn-sm {% if user.userprofile.reseller %}btn-danger{% else %}btn-success{% endif %}" for="id_reseller">
+
                                             {% if user.userprofile.reseller %}No{% else %}Yes{% endif %}
-                                        </a>
+
                                     </label>
                                     {{ profile_form.reseller }}
                                     

@@ -115,7 +115,12 @@ In this section, you should mention all of the languages, frameworks, libraries,
 
 [![Build Status](https://travis-ci.com/SalvatoreFiengo/myecommerce.svg?branch=master)](https://travis-ci.com/SalvatoreFiengo/myecommerce)
 
-Other user used My-ecommerce and reported any errors encountered.
+- tested html with [html W3 validator](https://validator.w3.org/)
+- tested CSS with [CSS W3 validator](https://jigsaw.w3.org/css-validator/validator)
+- Python tested with [PEP8 online](http://pep8online.com/)
+- Javascript tested with [Esprima](https://esprima.org/demo/validate.html)
+
+Other users used My-ecommerce and reported any errors encountered.
 They registered, logged in, tested checkout and added their own products
 
 Automated tests are included in test.py for each app: accounts, helper, product, product_manager, cart
@@ -211,6 +216,21 @@ No major issues spotted on IE or Edge
 
 ## Deployment
 
+### Github deployment:
+Deployed as per instructions on Github, 
+files not pushed (in .gitignore file):
+- "__pycache__/"
+- "accounts/__pycache__/"
+- "accounts/migrations/__pycache__/"
+- "db.sqlite3"
+- "env.py"
+- "myecommerce/__pycache__/"
+- "products/__pycache__/"
+- "products/migrations/__pycache__/"
+- "virtual/"
+- "media/"
+- "static/"
+- "*.png"
 ### Heroku deployment:
 1. Created requirements.txt
 2. Procfile pointing to gunicorn
@@ -235,9 +255,10 @@ All environment variables are stored in an env.py file that imports "os" and cal
     - EMAIL_ADDRESS, EMAIL PASSWOD, to provide email when resetting passwords
     - SECRET_KEY, Django secret key
     - STRIPE_PUBLISHABLE, STRIPE_SECRET, stripe publishable and secret keys to get access to stripe apis 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-
-To run the project locally: python manage.py runserver
+Worth to mention I used a virtual environment to install dependencies and run application locally
+Virtual environment named virtual
+To access Virtual environment: source virtual/scripts/activate
+Then to run the project locally: python manage.py runserver
 
 ## Credits
 Many thanks to:
