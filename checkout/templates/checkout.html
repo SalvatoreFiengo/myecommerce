@@ -36,12 +36,13 @@
                         {{ payment_form | as_bootstrap}}
                     </div>
                     {% csrf_token %}
-                    <div class="form-group col-md-12">
-                        <input type="submit" class="btn btn-primary" id="submit_payment_btn" name="commit"
-                            value="Submit Payment">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <input type="submit" class="btn btn-primary" id="submit_payment_btn" name="commit"
+                                value="Submit Payment">
+                        </div>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
